@@ -1,0 +1,20 @@
+#!/bin/bash
+set -xe
+
+rev=$(git rev-parse --short HEAD)
+version=$(python ./setup.py --version | cut -d. -f1,2)
+
+cd docs/_build/html
+
+git init
+git config user.name "${GITHUB_AUTHOR:-doc bot}"
+git config user.email "${GITHUB_EMAIL:-rmcgover@redhat.com}"
+
+git remote add origin "https://$GITHUB_TOKEN@github.com/rohanpm/cdn-definitions.git"
+git fetch origin
+git reset origin/gh-pages || true
+
+git add -A .
+if git commit -m "Build documentation for ${version} at ${rev}"; then
+  git push -q origin HEAD:refs/heads/gh-pages
+fi

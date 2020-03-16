@@ -1,0 +1,83 @@
+{
+    "origin_alias": [
+        {
+            "dest": "/origin",
+            "src": "/content/origin"
+        },
+        {
+            "dest": "/origin/rpms",
+            "src": "/origin/rpm"
+        }
+    ],
+    "rhui_alias": [
+        {
+            "dest": "/content/aus/rhel",
+            "src": "/content/aus/rhel/rhui"
+        },
+        {
+            "dest": "/content/beta/rhel8",
+            "src": "/content/beta/rhel8/rhui"
+        },
+        {
+            "dest": "/content/beta/rhel-alt",
+            "src": "/content/beta/rhel-alt/rhui"
+        },
+        {
+            "dest": "/content/beta/rhel",
+            "src": "/content/beta/rhel/rhui"
+        },
+        {
+            "dest": "/content/beta/rhs",
+            "src": "/content/beta/rhs/rhui"
+        },
+        {
+            "dest": "/content/dist/layered",
+            "src": "/content/dist/layered/rhui"
+        },
+        {
+            "dest": "/content/dist/middleware",
+            "src": "/content/dist/middleware/rhui"
+        },
+        {
+            "dest": "/content/dist/rhel8",
+            "src": "/content/dist/rhel8/rhui"
+        },
+        {
+            "dest": "/content/dist/rhel-alt",
+            "src": "/content/dist/rhel-alt/rhui"
+        },
+        {
+            "dest": "/content/dist/rhel",
+            "src": "/content/dist/rhel/rhui"
+        },
+        {
+            "dest": "/content/dist/rhes",
+            "src": "/content/dist/rhes/rhui"
+        },
+        {
+            "dest": "/content/dist/rhs",
+            "src": "/content/dist/rhs/rhui"
+        },
+        {
+            "dest": "/content/e4s/rhel",
+            "src": "/content/e4s/rhel/rhui"
+        },
+        {
+            "dest": "/content/els/rhel",
+            "src": "/content/els/rhel/rhui"
+        },
+        {
+            "dest": "/content/eus/rhel",
+            "src": "/content/eus/rhel/rhui"
+        },
+        {
+            "dest": "/content/fastrack/rhel",
+            "src": "/content/fastrack/rhel/rhui"
+        },
+        {
+            "dest": "/content/rc/rhel",
+            "src": "/content/rc/rhel/rhui"
+        }
+    ],
+    "version": "0.1.0"
+}

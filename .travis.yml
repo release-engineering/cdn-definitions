@@ -1,0 +1,25 @@
+sudo: false
+language: python
+install: pip install tox
+matrix:
+  include:
+  - python: "2.7"
+    env: TOX_ENV=py27
+  - python: "3.8"
+    env: TOX_ENV=static
+  - python: "3.8"
+    env: TOX_ENV=cov-travis DEPLOY=1
+  - python: "3.8"
+    env: TOX_ENV=docs
+script: tox -e $TOX_ENV
+after_success:
+- test $TOX_ENV = docs && scripts/push-docs
+
+deploy:
+  provider: pypi
+  user: __token__
+  password: todo
+  on:
+    tags: true
+    condition: $DEPLOY = 1
+  skip_existing: true

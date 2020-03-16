@@ -1,0 +1,40 @@
+#!/usr/bin/python
+import os
+import sys
+import yaml
+import json
+
+ROOT = os.path.dirname(os.path.dirname(__file__))
+
+
+def sync_dataset(basename):
+    yaml_file = os.path.join(ROOT, "cdn_definitions", "%s.yaml" % basename)
+    json_file = os.path.join(ROOT, "cdn_definitions", "%s.json" % basename)
+
+    with open(yaml_file) as f:
+        data_yaml = yaml.load(f, yaml.SafeLoader)
+
+    if os.path.exists(json_file):
+        with open(json_file) as f:
+            data_json = json.load(f)
+    else:
+        data_json = {}
+
+    if json.dumps(data_yaml, sort_keys=True) != json.dumps(data_json, sort_keys=True):
+        with open(json_file, "w") as f:
+            json.dump(data_yaml, f, indent=4, sort_keys=True)
+        os.system("git add %s" % json_file)
+        print("%s.json has been rewritten, please commit the changes" % basename)
+        sys.exit(3)
+
+
+if len(sys.argv) > 1:
+    # Invoked with args, e.g. from git hook.
+    # Just process the named dataset.
+    sync_dataset(sys.argv[1])
+else:
+    # Invoked with no args, process all datasets
+    try:
+        sync_dataset("data")
+    finally:
+        sync_dataset("schema")

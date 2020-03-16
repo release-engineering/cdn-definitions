@@ -1,0 +1,25 @@
+repos:
+- repo: local
+  hooks:
+
+  - id: make-json-data
+    name: make-json-data
+    entry: scripts/make-json
+    args: [data]
+    language: script
+    description: keep data.json in sync with data.yaml
+    require_serial: true
+
+  - id: make-json-schema
+    name: make-json-schema
+    entry: scripts/make-json
+    args: [schema]
+    language: script
+    description: keep schema.json in sync with schema.yaml
+    require_serial: true
+
+- repo: https://github.com/ambv/black
+  rev: 026c81b83454f176a9f9253cbfb70be2c159d822
+  hooks:
+  - id: black
+    language_version: python3.6
