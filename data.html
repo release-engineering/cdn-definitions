@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Data &#8212; cdn-definitions  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Maintenance Guide" href="maint.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="data">
+<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cdn-definitions">
+<h2>CDN definitions<a class="headerlink" href="#cdn-definitions" title="Permalink to this headline">¶</a></h2>
+<p>This dataset contains the latest version of CDN definitions.</p>
+<p>It is also available in raw JSON or YAML format at URLs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/data.json">https://release-engineering.github.io/cdn-definitions/data.json</a></p></li>
+<li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/data.yaml">https://release-engineering.github.io/cdn-definitions/data.yaml</a></p></li>
+</ul>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="c1"># Version of this data structure&#39;s format.</span>
+<span class="c1"># Version string is maintained in accordance with SemVer.</span>
+<span class="n">version</span><span class="p">:</span> <span class="s2">&quot;0.1.0&quot;</span>
+
+<span class="c1"># Aliases between paths used for consuming content under RHUI entitlements.</span>
+<span class="c1">#</span>
+<span class="c1"># Each item defines a &quot;src&quot; (a path accessible under RHUI entitlements)</span>
+<span class="c1"># and a &quot;dest&quot; (a path where identical content is accessible under non-RHUI entitlements).</span>
+<span class="c1"># For example, /content/dist/rhel/rhui/X should be an alias for /content/dist/rhel/X.</span>
+<span class="c1">#</span>
+<span class="c1"># For some of these aliases, certain content is filtered under the /rhui/ paths</span>
+<span class="c1"># (mainly architectures). This is currently not expressed in the dataset here.</span>
+<span class="n">rhui_alias</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">aus</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">aus</span><span class="o">/</span><span class="n">rhel</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel8</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel8</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhs</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhs</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">layered</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">layered</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">middleware</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel8</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel8</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhes</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhes</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhs</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhs</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">e4s</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">e4s</span><span class="o">/</span><span class="n">rhel</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">els</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">els</span><span class="o">/</span><span class="n">rhel</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">eus</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">eus</span><span class="o">/</span><span class="n">rhel</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">fastrack</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">fastrack</span><span class="o">/</span><span class="n">rhel</span>
+
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">rc</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">rc</span><span class="o">/</span><span class="n">rhel</span>
+
+
+<span class="c1"># Aliases between paths relating to the origin area of CDN.</span>
+<span class="n">origin_alias</span><span class="p">:</span>
+
+<span class="c1"># Top-level of origin is accessible also under &quot;content&quot;.</span>
+<span class="c1">#</span>
+<span class="c1"># Original rationale: relative symlinks from Packages to origin were shared between rhui</span>
+<span class="c1"># and non-rhui repos, but paths for rhui repos are one level deeper than non-rhui repos.</span>
+<span class="c1">#</span>
+<span class="c1"># That means a relative link starting with a sequence of &quot;../../..&quot; reaching up to</span>
+<span class="c1"># /origin for a non-rhui repo would only reach up to /content/origin for a rhui repo;</span>
+<span class="c1"># hence for the same link to work in both cases, this alias must exist.</span>
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">origin</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span>
+
+<span class="c1"># &quot;rpm&quot; and &quot;rpms&quot; mean the same thing under origin.</span>
+<span class="c1">#</span>
+<span class="c1"># This was originally introduced due to a bug in publishing tools, where some code</span>
+<span class="c1"># was designed for &quot;rpms&quot; while other code was designed for &quot;rpm&quot;. Rather than fixing</span>
+<span class="c1"># it properly, it was worked around by a symlink, and the workaround is now effectively</span>
+<span class="c1"># permanent.</span>
+<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span><span class="o">/</span><span class="n">rpm</span>
+  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span><span class="o">/</span><span class="n">rpms</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cdn-definitions-schema">
+<h2>CDN definitions schema<a class="headerlink" href="#cdn-definitions-schema" title="Permalink to this headline">¶</a></h2>
+<p>This dataset contains the JSON schema declaring the structure of
+the CDN definitions.</p>
+<p>It is also available in raw JSON or YAML format at URLs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/schema.json">https://release-engineering.github.io/cdn-definitions/schema.json</a></p></li>
+<li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/schema.yaml">https://release-engineering.github.io/cdn-definitions/schema.yaml</a></p></li>
+</ul>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>---
+# Schema for CDN definitions dataset.
+#
+# This schema is used within autotests to ensure that every published
+# revision of the dataset matches the expected structure.
+#
+# Check the dataset itself for explanatory comments on each field.
+
+$schema: http://json-schema.org/draft-07/schema#
+$id: http://release-engineering.github.io/cdn-definitions/schema.json
+
+
+definitions:
+
+  absolute_path:
+    type: string
+    pattern: &quot;^/&quot;
+
+  path_alias:
+    type: object
+    properties:
+      src:
+        $ref: &quot;#/definitions/absolute_path&quot;
+      dest:
+        $ref: &quot;#/definitions/absolute_path&quot;
+    requiredProperties:
+    - src
+    - dest
+    additionalProperties: false
+
+  path_alias_list:
+    type: array
+    items:
+      $ref: &quot;#/definitions/path_alias&quot;
+    uniqueItems: true
+
+
+type: object
+properties:
+
+  version:
+    type: string
+    pattern: &quot;^[0-9]+\\.[0-9]+\\.[0-9]+$&quot;
+
+  rhui_alias:
+    $ref: &quot;#/definitions/path_alias_list&quot;
+
+  origin_alias:
+    $ref: &quot;#/definitions/path_alias_list&quot;
+
+requiredProperties:
+- version
+- rhui_alias
+- origin_alias
+
+additionalProperties: false
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">cdn-definitions</a></h1>
+
+
+
+<p class="blurb">Data definitions for Red Hat's content delivery network</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maint.html">Maintenance Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cdn-definitions">CDN definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cdn-definitions-schema">CDN definitions schema</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="maint.html" title="previous chapter">Maintenance Guide</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Red Hat.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/data.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/rohanpm/cdn-definitions" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

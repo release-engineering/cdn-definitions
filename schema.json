@@ -1,0 +1,52 @@
+{
+    "$id": "http://release-engineering.github.io/cdn-definitions/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "definitions": {
+        "absolute_path": {
+            "pattern": "^/",
+            "type": "string"
+        },
+        "path_alias": {
+            "additionalProperties": false,
+            "properties": {
+                "dest": {
+                    "$ref": "#/definitions/absolute_path"
+                },
+                "src": {
+                    "$ref": "#/definitions/absolute_path"
+                }
+            },
+            "requiredProperties": [
+                "src",
+                "dest"
+            ],
+            "type": "object"
+        },
+        "path_alias_list": {
+            "items": {
+                "$ref": "#/definitions/path_alias"
+            },
+            "type": "array",
+            "uniqueItems": true
+        }
+    },
+    "properties": {
+        "origin_alias": {
+            "$ref": "#/definitions/path_alias_list"
+        },
+        "rhui_alias": {
+            "$ref": "#/definitions/path_alias_list"
+        },
+        "version": {
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "type": "string"
+        }
+    },
+    "requiredProperties": [
+        "version",
+        "rhui_alias",
+        "origin_alias"
+    ],
+    "type": "object"
+}
