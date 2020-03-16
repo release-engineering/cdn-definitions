@@ -5,7 +5,7 @@ cdn-definitions
 
 Data definitions for Red Hat's content delivery network.
 
-![Build status](https://github.com/rohanpm/cdn-definitions/workflows/Python%20tests/badge.svg?branch=master&event=push)
+![Build status](https://travis-ci.org/rohanpm/cdn-definitions.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/rohanpm/cdn-definitions/badge.svg?branch=master)](https://coveralls.io/github/rohanpm/cdn-definitions?branch=master)
 
 - [Source](https://github.com/rohanpm/cdn-definitions)
