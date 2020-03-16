@@ -7,8 +7,8 @@ Usage as online dataset
 
 The latest version of this dataset can be downloaded at any time from URLs:
 
-- https://release-engineering.github.io/cdn-definitions/data.json
-- https://release-engineering.github.io/cdn-definitions/data.yaml
+- https://rohanpm.github.io/cdn-definitions/data.json
+- https://rohanpm.github.io/cdn-definitions/data.yaml
 
 Both files contain equivalent data.
 
