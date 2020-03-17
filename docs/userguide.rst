@@ -60,5 +60,8 @@ Python reference
 .. module:: cdn_definitions
 
 .. autoclass:: PathAlias()
+   :members:
+
 .. autofunction:: rhui_aliases
+
 .. autofunction:: origin_aliases
