@@ -86,7 +86,7 @@ html_theme = "alabaster"
 # documentation.
 #
 html_theme_options = {
-    "github_user": "rohanpm",
+    "github_user": "release-engineering",
     "github_repo": "cdn-definitions",
     "github_button": False,
     "github_banner": True,

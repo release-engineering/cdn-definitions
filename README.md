@@ -5,23 +5,23 @@ cdn-definitions
 
 Data definitions for Red Hat's content delivery network.
 
-![Build status](https://travis-ci.org/rohanpm/cdn-definitions.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/rohanpm/cdn-definitions/badge.svg?branch=master)](https://coveralls.io/github/rohanpm/cdn-definitions?branch=master)
+![Build status](https://travis-ci.org/release-engineering/cdn-definitions.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/release-engineering/cdn-definitions/badge.svg?branch=master)](https://coveralls.io/github/release-engineering/cdn-definitions?branch=master)
 
-- [Source](https://github.com/rohanpm/cdn-definitions)
-- [Documentation](https://rohanpm.github.io/cdn-definitions/)
+- [Source](https://github.com/release-engineering/cdn-definitions)
+- [Documentation](https://release-engineering.github.io/cdn-definitions/)
 - [PyPI](https://pypi.org/project/cdn-definitions)
 
 This project maintains a dataset defining and influencing certain behaviors
 of Red Hat's CDN, such as aliases between paths.
 
 To get an idea of the type of data maintained within this project, you can
-[browse the latest published dataset](https://rohanpm.github.io/cdn-definitions/data.yaml).
+[browse the latest published dataset](https://release-engineering.github.io/cdn-definitions/data.yaml).
 
 See the
-[User Guide](https://rohanpm.github.io/cdn-definitions/userguide.html#) for more information
+[User Guide](https://release-engineering.github.io/cdn-definitions/userguide.html#) for more information
 if you are interested in consuming this data, or the
-[Maintenance Guide](https://rohanpm.github.io/cdn-definitions/maint.html#) if you need
+[Maintenance Guide](https://release-engineering.github.io/cdn-definitions/maint.html#) if you need
 to make changes.
 
 License
