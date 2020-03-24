@@ -1,8 +1,6 @@
 cdn-definitions
 ===============
 
-**experimental project!**
-
 Data definitions for Red Hat's content delivery network.
 
 .. toctree::
