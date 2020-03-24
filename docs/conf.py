@@ -103,7 +103,7 @@ html_theme_options = {
 html_static_path = ["_static"]
 
 # Copy cdn_definitions path here to include online versions of the data.
-html_extra_path = ["../cdn_definitions"]
+html_extra_path = ["../src/cdn_definitions"]
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.

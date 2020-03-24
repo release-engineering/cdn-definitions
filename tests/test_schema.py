@@ -8,8 +8,8 @@ from jsonschema import ValidationError
 
 from . import ROOT_PATH
 
-DATA_PATH = os.path.join(ROOT_PATH, "cdn_definitions", "data.yaml")
-SCHEMA_PATH = os.path.join(ROOT_PATH, "cdn_definitions", "schema.yaml")
+DATA_PATH = os.path.join(ROOT_PATH, "src", "cdn_definitions", "data.yaml")
+SCHEMA_PATH = os.path.join(ROOT_PATH, "src", "cdn_definitions", "schema.yaml")
 
 
 @pytest.fixture

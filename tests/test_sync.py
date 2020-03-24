@@ -14,8 +14,12 @@ def any_basename(request):
 
 def test_data_sync(any_basename):
     """Verify that .json files are up-to-date with .yaml files."""
-    yaml_path = os.path.join(ROOT_PATH, "cdn_definitions", "%s.yaml" % any_basename)
-    json_path = os.path.join(ROOT_PATH, "cdn_definitions", "%s.json" % any_basename)
+    yaml_path = os.path.join(
+        ROOT_PATH, "src", "cdn_definitions", "%s.yaml" % any_basename
+    )
+    json_path = os.path.join(
+        ROOT_PATH, "src", "cdn_definitions", "%s.json" % any_basename
+    )
 
     with open(yaml_path) as f:
         yaml_data = yaml.load(f, yaml.SafeLoader)

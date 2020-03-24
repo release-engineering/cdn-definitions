@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def get_description():
@@ -19,7 +19,8 @@ setup(
     version="0.1.0",
     author="Rohan McGovern",
     author_email="rmcgover@redhat.com",
-    packages=["cdn_definitions"],
+    packages=find_packages("src"),
+    package_dir={"": "src"},
     url="https://github.com/release-engineering/cdn-definitions",
     license="GNU General Public License",
     description=get_description(),

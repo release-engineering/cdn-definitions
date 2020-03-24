@@ -8,8 +8,8 @@ ROOT = os.path.dirname(os.path.dirname(__file__))
 
 
 def sync_dataset(basename):
-    yaml_file = os.path.join(ROOT, "cdn_definitions", "%s.yaml" % basename)
-    json_file = os.path.join(ROOT, "cdn_definitions", "%s.json" % basename)
+    yaml_file = os.path.join(ROOT, "src", "cdn_definitions", "%s.yaml" % basename)
+    json_file = os.path.join(ROOT, "src", "cdn_definitions", "%s.json" % basename)
 
     with open(yaml_file) as f:
         data_yaml = yaml.load(f, yaml.SafeLoader)
