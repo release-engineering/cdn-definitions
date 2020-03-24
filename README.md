@@ -1,8 +1,6 @@
 cdn-definitions
 ===============
 
-**experimental project!**
-
 Data definitions for Red Hat's content delivery network.
 
 ![Build status](https://travis-ci.org/release-engineering/cdn-definitions.svg?branch=master)
