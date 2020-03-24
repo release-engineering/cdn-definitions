@@ -5,7 +5,7 @@ cdn-definitions
 
 Data definitions for Red Hat's content delivery network.
 
-![Build status](https://travis-ci.org/release-engineering/cdn-definitions.svg?branch=master)
+[![Build Status](https://travis-ci.org/release-engineering/cdn-definitions.svg?branch=master)](https://travis-ci.org/release-engineering/cdn-definitions)
 [![Coverage Status](https://coveralls.io/repos/github/release-engineering/cdn-definitions/badge.svg?branch=master)](https://coveralls.io/github/release-engineering/cdn-definitions?branch=master)
 
 - [Source](https://github.com/release-engineering/cdn-definitions)
