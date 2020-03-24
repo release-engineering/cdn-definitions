@@ -70,9 +70,13 @@ the <code class="docutils literal notranslate"><span class="pre">cdn_definitions
     <span class="c1"># so now do something special</span>
 </pre></div>
 </div>
-<p>The library will use its own bundled data.
-To ensure the most up-to-date definitions, upgrade the
-package from PyPI.</p>
+<p>The library will use data from the first existing of the following sources:</p>
+<ul class="simple">
+<li><p>A JSON file pointed at by the <code class="docutils literal notranslate"><span class="pre">CDN_DEFINITIONS_PATH</span></code> environment variable.</p></li>
+<li><p>The file bundled with the library on PyPI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/usr/share/cdn-definitions/data.json</span></code>.</p></li>
+</ul>
+<p>To ensure the most up-to-date definitions, upgrade the package from PyPI.</p>
 <div class="section" id="python-reference">
 <h3>Python reference<a class="headerlink" href="#python-reference" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-cdn_definitions"></span><dl class="class">
