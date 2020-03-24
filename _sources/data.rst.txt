@@ -8,8 +8,8 @@ This dataset contains the latest version of CDN definitions.
 
 It is also available in raw JSON or YAML format at URLs:
 
-- https://rohanpm.github.io/cdn-definitions/data.json
-- https://rohanpm.github.io/cdn-definitions/data.yaml
+- https://release-engineering.github.io/cdn-definitions/data.json
+- https://release-engineering.github.io/cdn-definitions/data.yaml
 
 
 .. include:: ../cdn_definitions/data.yaml
@@ -24,8 +24,8 @@ the CDN definitions.
 
 It is also available in raw JSON or YAML format at URLs:
 
-- https://rohanpm.github.io/cdn-definitions/schema.json
-- https://rohanpm.github.io/cdn-definitions/schema.yaml
+- https://release-engineering.github.io/cdn-definitions/schema.json
+- https://release-engineering.github.io/cdn-definitions/schema.yaml
 
 .. include:: ../cdn_definitions/schema.yaml
     :code: yaml

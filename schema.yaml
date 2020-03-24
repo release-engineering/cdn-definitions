@@ -7,7 +7,7 @@
 # Check the dataset itself for explanatory comments on each field.
 
 $schema: http://json-schema.org/draft-07/schema#
-$id: http://rohanpm.github.io/cdn-definitions/schema.json
+$id: http://release-engineering.github.io/cdn-definitions/schema.json
 
 
 definitions:
