@@ -1,8 +1,23 @@
 import json
 import os
 
-JSON_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.json")
-DATA = json.load(open(JSON_PATH))
+
+def load_data():
+    # Load data from first existing of these
+    candidate_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.json"),
+        "/usr/share/cdn-definitions/data.json",
+    ]
+
+    # If env var is set, it takes highest precedence
+    if "CDN_DEFINITIONS_PATH" in os.environ:
+        candidate_paths.insert(0, os.environ["CDN_DEFINITIONS_PATH"])
+
+    existing_paths = [p for p in candidate_paths if os.path.exists(p)]
+    return json.load(open(existing_paths[0]))
+
+
+DATA = load_data()
 
 
 class PathAlias(object):

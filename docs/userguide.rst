@@ -49,9 +49,13 @@ the ``cdn_definitions`` module, as in example:
       # my path falls under a /rhui/ alias,
       # so now do something special
 
-The library will use its own bundled data.
-To ensure the most up-to-date definitions, upgrade the
-package from PyPI.
+The library will use data from the first existing of the following sources:
+
+- A JSON file pointed at by the ``CDN_DEFINITIONS_PATH`` environment variable.
+- The file bundled with the library on PyPI.
+- ``/usr/share/cdn-definitions/data.json``.
+
+To ensure the most up-to-date definitions, upgrade the package from PyPI.
 
 
 Python reference
