@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- n/a
+### Fixed
+
+- Fixed missing files from source distribution
 
 ## 0.1.0 - 2020-03-24
 
-Initial release.
+- Initial release
 
 [Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v0.1.0...HEAD
