@@ -12,7 +12,7 @@ It is also available in raw JSON or YAML format at URLs:
 - https://release-engineering.github.io/cdn-definitions/data.yaml
 
 
-.. include:: ../cdn_definitions/data.yaml
+.. include:: ../src/cdn_definitions/data.yaml
     :code: yaml
 
 
@@ -27,5 +27,5 @@ It is also available in raw JSON or YAML format at URLs:
 - https://release-engineering.github.io/cdn-definitions/schema.json
 - https://release-engineering.github.io/cdn-definitions/schema.yaml
 
-.. include:: ../cdn_definitions/schema.yaml
+.. include:: ../src/cdn_definitions/schema.yaml
     :code: yaml
