@@ -20,7 +20,7 @@ setup(
     author="Rohan McGovern",
     author_email="rmcgover@redhat.com",
     packages=["cdn_definitions"],
-    url="https://github.com/rohanpm/cdn-definitions",
+    url="https://github.com/release-engineering/cdn-definitions",
     license="GNU General Public License",
     description=get_description(),
     include_package_data=True,
