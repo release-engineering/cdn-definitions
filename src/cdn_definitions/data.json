@@ -71,10 +71,6 @@
             "src": "/content/eus/rhel/rhui"
         },
         {
-            "dest": "/content/fastrack/rhel",
-            "src": "/content/fastrack/rhel/rhui"
-        },
-        {
             "dest": "/content/rc/rhel",
             "src": "/content/rc/rhel/rhui"
         }

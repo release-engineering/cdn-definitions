@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- n/a
+### Removed
+
+- Dropped an incorrect fastrack RHUI alias
 
 ## [0.2.0] - 2020-03-24
 
