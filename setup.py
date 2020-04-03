@@ -37,4 +37,8 @@ setup(
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
+    project_urls={
+        "Documentation": "https://release-engineering.github.io/cdn-definitions/",
+        "Changelog": "https://github.com/release-engineering/cdn-definitions/blob/master/CHANGELOG.md",
+    },
 )
