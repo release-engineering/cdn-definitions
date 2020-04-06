@@ -1,7 +1,7 @@
 ---
 # Version of this data structure's format.
 # Version string is maintained in accordance with SemVer.
-version: "0.1.0"
+version: "1.0.0"
 
 # Aliases between paths used for consuming content under RHUI entitlements.
 #
