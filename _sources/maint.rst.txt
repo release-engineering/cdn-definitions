@@ -100,7 +100,7 @@ Downstream projects
 Some known or expected uses of this dataset from downstream projects are listed here.
 Be aware that changes to the dataset may require updates to packages for these projects.
 
-  **cdn-lambda**
+  **exodus-lambda**
     - Uses RHUI and origin aliases when resolving requests to the CDN.
 
   **engproduct-cli**
