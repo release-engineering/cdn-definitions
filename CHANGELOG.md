@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [1.1.0] - 2020-05-13
+
+### Added
+
+- Define RHEL8 E4S RHUI mapping
+
 ## [1.0.0] - 2020-04-07
 
 ### Removed
@@ -31,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/release-engineering/cdn-definitions/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/release-engineering/cdn-definitions/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/release-engineering/cdn-definitions/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/release-engineering/cdn-definitions/compare/v0.1.0...v0.1.1
