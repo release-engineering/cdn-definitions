@@ -59,6 +59,10 @@
             "src": "/content/dist/rhs/rhui"
         },
         {
+            "dest": "/content/e4s/rhel8",
+            "src": "/content/e4s/rhel8/rhui"
+        },
+        {
             "dest": "/content/e4s/rhel",
             "src": "/content/e4s/rhel/rhui"
         },

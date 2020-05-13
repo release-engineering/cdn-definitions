@@ -48,6 +48,9 @@ rhui_alias:
 - src: /content/dist/rhs/rhui
   dest: /content/dist/rhs
 
+- src: /content/e4s/rhel8/rhui
+  dest: /content/e4s/rhel8
+
 - src: /content/e4s/rhel/rhui
   dest: /content/e4s/rhel
 
