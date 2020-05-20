@@ -57,6 +57,9 @@ rhui_alias:
 - src: /content/els/rhel/rhui
   dest: /content/els/rhel
 
+- src: /content/eus/rhel8/rhui
+  dest: /content/eus/rhel8
+
 - src: /content/eus/rhel/rhui
   dest: /content/eus/rhel
 
