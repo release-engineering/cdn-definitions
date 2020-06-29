@@ -16,7 +16,7 @@ def get_long_description():
 
 setup(
     name="cdn-definitions",
-    version="1.2.0",
+    version="1.3.0",
     author="Rohan McGovern",
     author_email="rmcgover@redhat.com",
     packages=find_packages("src"),
