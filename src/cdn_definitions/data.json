@@ -11,6 +11,10 @@
     ],
     "rhui_alias": [
         {
+            "dest": "/content/aus/rhel8",
+            "src": "/content/aus/rhel8/rhui"
+        },
+        {
             "dest": "/content/aus/rhel",
             "src": "/content/aus/rhel/rhui"
         },

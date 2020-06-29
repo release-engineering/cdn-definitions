@@ -12,6 +12,9 @@ version: "1.0.0"
 # For some of these aliases, certain content is filtered under the /rhui/ paths
 # (mainly architectures). This is currently not expressed in the dataset here.
 rhui_alias:
+- src: /content/aus/rhel8/rhui
+  dest: /content/aus/rhel8
+
 - src: /content/aus/rhel/rhui
   dest: /content/aus/rhel
 
