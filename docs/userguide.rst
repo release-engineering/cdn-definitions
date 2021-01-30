@@ -42,14 +42,15 @@ the ``cdn_definitions`` module, as in example:
 
 .. code-block:: python
 
-  from cdn_definitions import rhui_aliases
+   from cdn_definitions import load_data
 
-  for alias in rhui_aliases():
-    if my_path.startswith(alias.src):
-      # my path falls under a /rhui/ alias,
-      # so now do something special
+   DATA = load_data(source="https://raw.githubusercontent.com/release-engineering/cdn-definitions/master/src/cdn_definitions/data.json")
+   for alias in DATA["rhui_alias"]:
+     if my_path.startswith(alias["src"]):
+       # my path falls under a /rhui/ alias,
+       # so now do something special
 
-The library will use data from the first existing of the following sources:
+If a source is not specified, the library will use data from the first existing of the following sources:
 
 - A JSON or YAML file pointed at by the ``CDN_DEFINITIONS_PATH`` environment variable.
 - The file bundled with the library on PyPI.
@@ -63,9 +64,6 @@ Python reference
 
 .. module:: cdn_definitions
 
-.. autoclass:: PathAlias()
-   :members:
+.. autofunction:: load_data
 
-.. autofunction:: rhui_aliases
-
-.. autofunction:: origin_aliases
+.. autofunction:: load_schema
