@@ -1,20 +1,29 @@
 import json
 import os
+import requests
 
 
-def load_data():
-    # Load data from first existing of these
-    candidate_paths = [
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.json"),
-        "/usr/share/cdn-definitions/data.json",
-    ]
+def load_data(source=None):
+    if source is None:
+        # Load data from first existing of these
+        candidate_paths = [
+            os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.json"),
+            "/usr/share/cdn-definitions/data.json",
+        ]
 
-    # If env var is set, it takes highest precedence
-    if "CDN_DEFINITIONS_PATH" in os.environ:
-        candidate_paths.insert(0, os.environ["CDN_DEFINITIONS_PATH"])
-
-    existing_paths = [p for p in candidate_paths if os.path.exists(p)]
-    return json.load(open(existing_paths[0]))
+        # If env var is set, it takes highest precedence
+        if "CDN_DEFINITIONS_PATH" in os.environ:
+            cdn_definitions_path = os.environ["CDN_DEFINITIONS_PATH"]
+            candidate_paths.insert(0, cdn_definitions_path)
+            if cdn_definitions_path.startswith("http"):
+                return requests.get(cdn_definitions_path)
+        existing_paths = [p for p in candidate_paths if os.path.exists(p)]
+        return json.load(open(existing_paths[0]))
+    if os.path.exists(source):
+        return json.load(open(source))
+    if source.startswith("http"):
+        return requests.get(source)
+    raise RuntimeError("Could not load data")
 
 
 DATA = load_data()
@@ -43,15 +52,15 @@ class PathAlias(object):
 
 def rhui_aliases():
     """Returns:
-        list[:class:`~PathAlias`]
-            A list of aliases relating to RHUI paths.
+    list[:class:`~PathAlias`]
+        A list of aliases relating to RHUI paths.
     """
     return [PathAlias(**elem) for elem in DATA["rhui_alias"]]
 
 
 def origin_aliases():
     """Returns:
-        list[:class:`~PathAlias`]
-            A list of aliases relating to origin paths.
+    list[:class:`~PathAlias`]
+        A list of aliases relating to origin paths.
     """
     return [PathAlias(**elem) for elem in DATA["origin_alias"]]
