@@ -1,12 +1,13 @@
 import json
 import os
+import yaml
 
 
 def load_data():
     # Load data from first existing of these
     candidate_paths = [
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.json"),
-        "/usr/share/cdn-definitions/data.json",
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "data.yaml"),
+        "/usr/share/cdn-definitions/data.yaml",
     ]
 
     # If env var is set, it takes highest precedence
@@ -14,7 +15,12 @@ def load_data():
         candidate_paths.insert(0, os.environ["CDN_DEFINITIONS_PATH"])
 
     existing_paths = [p for p in candidate_paths if os.path.exists(p)]
-    return json.load(open(existing_paths[0]))
+
+    _, ext = os.path.splitext(existing_paths[0])
+    if ext.lower() == ".json":
+        return json.load(open(existing_paths[0]))
+
+    return yaml.load(open(existing_paths[0]), yaml.SafeLoader)
 
 
 DATA = load_data()
