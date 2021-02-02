@@ -43,15 +43,15 @@ class PathAlias(object):
 
 def rhui_aliases():
     """Returns:
-        list[:class:`~PathAlias`]
-            A list of aliases relating to RHUI paths.
+    list[:class:`~PathAlias`]
+        A list of aliases relating to RHUI paths.
     """
     return [PathAlias(**elem) for elem in DATA["rhui_alias"]]
 
 
 def origin_aliases():
     """Returns:
-        list[:class:`~PathAlias`]
-            A list of aliases relating to origin paths.
+    list[:class:`~PathAlias`]
+        A list of aliases relating to origin paths.
     """
     return [PathAlias(**elem) for elem in DATA["origin_alias"]]
