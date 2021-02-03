@@ -51,9 +51,9 @@ the ``cdn_definitions`` module, as in example:
 
 The library will use data from the first existing of the following sources:
 
-- A JSON file pointed at by the ``CDN_DEFINITIONS_PATH`` environment variable.
+- A JSON or YAML file pointed at by the ``CDN_DEFINITIONS_PATH`` environment variable.
 - The file bundled with the library on PyPI.
-- ``/usr/share/cdn-definitions/data.json``.
+- ``/usr/share/cdn-definitions/data.yaml``.
 
 To ensure the most up-to-date definitions, upgrade the package from PyPI.
 
