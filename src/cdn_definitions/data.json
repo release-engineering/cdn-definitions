@@ -15,12 +15,20 @@
             "src": "/content/aus/rhel8/rhui"
         },
         {
+            "dest": "/content/aus/rhel9",
+            "src": "/content/aus/rhel9/rhui"
+        },
+        {
             "dest": "/content/aus/rhel",
             "src": "/content/aus/rhel/rhui"
         },
         {
             "dest": "/content/beta/rhel8",
             "src": "/content/beta/rhel8/rhui"
+        },
+        {
+            "dest": "/content/beta/rhel9",
+            "src": "/content/beta/rhel9/rhui"
         },
         {
             "dest": "/content/beta/rhel-alt",
@@ -47,6 +55,10 @@
             "src": "/content/dist/rhel8/rhui"
         },
         {
+            "dest": "/content/dist/rhel9",
+            "src": "/content/dist/rhel9/rhui"
+        },
+        {
             "dest": "/content/dist/rhel-alt",
             "src": "/content/dist/rhel-alt/rhui"
         },
@@ -67,6 +79,10 @@
             "src": "/content/e4s/rhel8/rhui"
         },
         {
+            "dest": "/content/e4s/rhel9",
+            "src": "/content/e4s/rhel9/rhui"
+        },
+        {
             "dest": "/content/e4s/rhel",
             "src": "/content/e4s/rhel/rhui"
         },
@@ -77,6 +93,10 @@
         {
             "dest": "/content/eus/rhel8",
             "src": "/content/eus/rhel8/rhui"
+        },
+        {
+            "dest": "/content/eus/rhel9",
+            "src": "/content/eus/rhel9/rhui"
         },
         {
             "dest": "/content/eus/rhel",
