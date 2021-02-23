@@ -11,7 +11,170 @@ $id: http://release-engineering.github.io/cdn-definitions/schema.json
 
 
 definitions:
+  arch:
+    type: string
 
+  arch_list:
+    type: array
+    items:
+      $ref: "#/definitions/arch"
+    uniqueItems: true
+
+  release_version:
+    type: string
+    pattern: "^[0-9]+\\.[0-9]+$"
+
+  major_version:
+    type: integer
+
+  major_version_string:
+    type: string
+    pattern: "^[0-9]+$"
+
+  signing_key:
+    type: string
+    pattern: "^[A-F0-9]{8}$"
+
+  product_id:
+    type: string
+    pattern: "^[0-9]+$"
+
+
+  product_id_list:
+    type: array
+    items:
+      $ref: "#/definitions/product_id"
+    uniqueItems: true
+
+  signing_key_list:
+    type: array
+    items:
+      $ref: "#/definitions/signing_key"
+    uniqueItems: true
+
+  release_version_list:
+    type: array
+    items:
+      $ref: "#/definitions/release_version"
+    uniqueItems: true
+
+  major_or_release_version:
+    type: string
+    pattern: "^[0-9]+(\\.[0-9]+)*$"
+
+  # various product definition mappings
+  version_to_arch_list_mapping:
+    type: object
+    propertyNames:
+      $ref: "#/definitions/major_version_string"
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/arch_list"
+    additionalProperties: false
+
+  major_to_release_version_mapping:
+    type: object
+    propertyNames:
+      $ref: "#/definitions/major_version_string"
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/release_version"
+    additionalProperties: false
+
+  release_stream_mapping:
+    type: object
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/release_version_list"
+    additionalProperties: false
+
+  current_latest_rhel_versions:
+    type: object
+    propertyNames:
+      type: string
+      pattern: "^(current|latest)\\_rhel[0-9]+\\_(beta|dist)$"
+    patternProperties:
+      ".*":
+        anyOf:
+        - type: "null"
+        - $ref: "#/definitions/release_version"
+    additionalProperties: false
+
+  env_to_releasever_mapping:
+    type: object
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/current_latest_rhel_versions"
+    additionalProperties: false
+
+  # TPS stream configuration
+  tps_variant_mapping:
+    type: object
+    patternProperties:
+      ".*":
+        type: string
+    additionalProperties: false
+
+  # signing keys mappings
+  beta_and_ga_keys_mapping:
+    type: object
+    properties:
+      beta_keys:
+        $ref: "#/definitions/signing_key_list"
+      ga_keys:
+        $ref: "#/definitions/signing_key_list"
+    required:
+    - ga_keys
+    additionalProperties: false
+
+  major_version_to_signing_keys_mapping:
+    propertyNames:
+      $ref: "#/definitions/major_version_string"
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/beta_and_ga_keys_mapping"
+    additionalProperties: false
+
+  string_to_signing_keys_mapping:
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/beta_and_ga_keys_mapping"
+    additionalProperties: false
+
+  signing_keys_mapping:
+    type: object
+    properties:
+      default:
+        $ref: "#/definitions/beta_and_ga_keys_mapping"
+      layered_product:
+        $ref: "#/definitions/string_to_signing_keys_mapping"
+      platform:
+        $ref: "#/definitions/string_to_signing_keys_mapping"
+      major_version:
+        $ref: "#/definitions/major_version_to_signing_keys_mapping"
+    required:
+    - layered_product
+    - platform
+    - major_version
+    additionalProperties: false
+
+  # misc workarounds
+  exclude_versions_from_listings:
+    type: array
+    items:
+      $ref: "#/definitions/release_version"
+    uniqueItems: true
+
+  cfme_version_mappings_list:
+    type: object
+    propertyNames:
+      $ref: "#/definitions/major_or_release_version"
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/major_or_release_version"
+    additionalProperties: false
+
+  # cdn configuration
   absolute_path:
     type: string
     pattern: "^/"
@@ -23,7 +186,7 @@ definitions:
         $ref: "#/definitions/absolute_path"
       dest:
         $ref: "#/definitions/absolute_path"
-    requiredProperties:
+    required:
     - src
     - dest
     additionalProperties: false
@@ -34,6 +197,11 @@ definitions:
       $ref: "#/definitions/path_alias"
     uniqueItems: true
 
+  symlink_exception_list:
+    type: array
+    items:
+      $ref: "#/definitions/absolute_path"
+    uniqueItems: true
 
 type: object
 properties:
@@ -48,9 +216,53 @@ properties:
   origin_alias:
     $ref: "#/definitions/path_alias_list"
 
+  symlink_exceptions:
+    $ref: "#/definitions/symlink_exception_list"
+
+  release_stream_mappings:
+    $ref: "#/definitions/release_stream_mapping"
+
+  env_to_releasever_mappings:
+    $ref: "#/definitions/env_to_releasever_mapping"
+
+  cfme_version_mappings:
+    $ref: "#/definitions/cfme_version_mappings_list"
+
+  tps_variant_mappings:
+    $ref: "#/definitions/tps_variant_mapping"
+
+  override_initial_rhel_release:
+    $ref: "#/definitions/major_to_release_version_mapping"
+
+  filter_arches_from_release:
+    $ref: "#/definitions/version_to_arch_list_mapping"
+
+  signing_keys_mappings:
+    $ref: "#/definitions/signing_keys_mapping"
+
+  rhui_product_id:
+    $ref: "#/definitions/product_id"
+
+  ignore_lp_version_product_ids:
+    $ref: "#/definitions/product_id_list"
+
+  exclude_from_listings:
+    $ref: "#/definitions/exclude_versions_from_listings"
+
 requiredProperties:
 - version
 - rhui_alias
 - origin_alias
+- symlink_exceptions
+- release_stream_mappings
+- env_to_releasever_mappings
+- cfme_version_mappings
+- tps_variant_mappings
+- filter_arch_from_releases
+- override_initial_rhel_release
+- signing_keys_mappings
+- rhui_product_id
+- ignore_lp_version_product_ids
+- exclude_from_listings
 
 additionalProperties: false

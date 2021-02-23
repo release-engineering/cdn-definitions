@@ -7,6 +7,113 @@
             "pattern": "^/",
             "type": "string"
         },
+        "arch": {
+            "type": "string"
+        },
+        "arch_list": {
+            "items": {
+                "$ref": "#/definitions/arch"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "beta_and_ga_keys_mapping": {
+            "additionalProperties": false,
+            "properties": {
+                "beta_keys": {
+                    "$ref": "#/definitions/signing_key_list"
+                },
+                "ga_keys": {
+                    "$ref": "#/definitions/signing_key_list"
+                }
+            },
+            "required": [
+                "ga_keys"
+            ],
+            "type": "object"
+        },
+        "cfme_version_mappings_list": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/major_or_release_version"
+                }
+            },
+            "propertyNames": {
+                "$ref": "#/definitions/major_or_release_version"
+            },
+            "type": "object"
+        },
+        "current_latest_rhel_versions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "$ref": "#/definitions/release_version"
+                        }
+                    ]
+                }
+            },
+            "propertyNames": {
+                "pattern": "^(current|latest)\\_rhel[0-9]+\\_(beta|dist)$",
+                "type": "string"
+            },
+            "type": "object"
+        },
+        "env_to_releasever_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/current_latest_rhel_versions"
+                }
+            },
+            "type": "object"
+        },
+        "exclude_versions_from_listings": {
+            "items": {
+                "$ref": "#/definitions/release_version"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "major_or_release_version": {
+            "pattern": "^[0-9]+(\\.[0-9]+)*$",
+            "type": "string"
+        },
+        "major_to_release_version_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/release_version"
+                }
+            },
+            "propertyNames": {
+                "$ref": "#/definitions/major_version_string"
+            },
+            "type": "object"
+        },
+        "major_version": {
+            "type": "integer"
+        },
+        "major_version_string": {
+            "pattern": "^[0-9]+$",
+            "type": "string"
+        },
+        "major_version_to_signing_keys_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/beta_and_ga_keys_mapping"
+                }
+            },
+            "propertyNames": {
+                "$ref": "#/definitions/major_version_string"
+            }
+        },
         "path_alias": {
             "additionalProperties": false,
             "properties": {
@@ -17,7 +124,7 @@
                     "$ref": "#/definitions/absolute_path"
                 }
             },
-            "requiredProperties": [
+            "required": [
                 "src",
                 "dest"
             ],
@@ -29,14 +136,148 @@
             },
             "type": "array",
             "uniqueItems": true
+        },
+        "product_id": {
+            "pattern": "^[0-9]+$",
+            "type": "string"
+        },
+        "product_id_list": {
+            "items": {
+                "$ref": "#/definitions/product_id"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "release_stream_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/release_version_list"
+                }
+            },
+            "type": "object"
+        },
+        "release_version": {
+            "pattern": "^[0-9]+\\.[0-9]+$",
+            "type": "string"
+        },
+        "release_version_list": {
+            "items": {
+                "$ref": "#/definitions/release_version"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "signing_key": {
+            "pattern": "^[A-F0-9]{8}$",
+            "type": "string"
+        },
+        "signing_key_list": {
+            "items": {
+                "$ref": "#/definitions/signing_key"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "signing_keys_mapping": {
+            "additionalProperties": false,
+            "properties": {
+                "default": {
+                    "$ref": "#/definitions/beta_and_ga_keys_mapping"
+                },
+                "layered_product": {
+                    "$ref": "#/definitions/string_to_signing_keys_mapping"
+                },
+                "major_version": {
+                    "$ref": "#/definitions/major_version_to_signing_keys_mapping"
+                },
+                "platform": {
+                    "$ref": "#/definitions/string_to_signing_keys_mapping"
+                }
+            },
+            "required": [
+                "layered_product",
+                "platform",
+                "major_version"
+            ],
+            "type": "object"
+        },
+        "string_to_signing_keys_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/beta_and_ga_keys_mapping"
+                }
+            }
+        },
+        "symlink_exception_list": {
+            "items": {
+                "$ref": "#/definitions/absolute_path"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "tps_variant_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "version_to_arch_list_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/arch_list"
+                }
+            },
+            "propertyNames": {
+                "$ref": "#/definitions/major_version_string"
+            },
+            "type": "object"
         }
     },
     "properties": {
+        "cfme_version_mappings": {
+            "$ref": "#/definitions/cfme_version_mappings_list"
+        },
+        "env_to_releasever_mappings": {
+            "$ref": "#/definitions/env_to_releasever_mapping"
+        },
+        "exclude_from_listings": {
+            "$ref": "#/definitions/exclude_versions_from_listings"
+        },
+        "filter_arches_from_release": {
+            "$ref": "#/definitions/version_to_arch_list_mapping"
+        },
+        "ignore_lp_version_product_ids": {
+            "$ref": "#/definitions/product_id_list"
+        },
         "origin_alias": {
             "$ref": "#/definitions/path_alias_list"
         },
+        "override_initial_rhel_release": {
+            "$ref": "#/definitions/major_to_release_version_mapping"
+        },
+        "release_stream_mappings": {
+            "$ref": "#/definitions/release_stream_mapping"
+        },
         "rhui_alias": {
             "$ref": "#/definitions/path_alias_list"
+        },
+        "rhui_product_id": {
+            "$ref": "#/definitions/product_id"
+        },
+        "signing_keys_mappings": {
+            "$ref": "#/definitions/signing_keys_mapping"
+        },
+        "symlink_exceptions": {
+            "$ref": "#/definitions/symlink_exception_list"
+        },
+        "tps_variant_mappings": {
+            "$ref": "#/definitions/tps_variant_mapping"
         },
         "version": {
             "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
@@ -46,7 +287,18 @@
     "requiredProperties": [
         "version",
         "rhui_alias",
-        "origin_alias"
+        "origin_alias",
+        "symlink_exceptions",
+        "release_stream_mappings",
+        "env_to_releasever_mappings",
+        "cfme_version_mappings",
+        "tps_variant_mappings",
+        "filter_arch_from_releases",
+        "override_initial_rhel_release",
+        "signing_keys_mappings",
+        "rhui_product_id",
+        "ignore_lp_version_product_ids",
+        "exclude_from_listings"
     ],
     "type": "object"
 }

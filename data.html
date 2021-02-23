@@ -135,6 +135,103 @@
 <span class="c1"># permanent.</span>
 <span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span><span class="o">/</span><span class="n">rpm</span>
   <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span><span class="o">/</span><span class="n">rpms</span>
+
+
+<span class="c1"># Content set prefixes which should be using symlinks at the $releasever level</span>
+<span class="c1"># according to normal business logic, but for historical reasons are exempt</span>
+<span class="c1"># and instead do not use symlinks.</span>
+<span class="n">symlink_exceptions</span><span class="p">:</span>
+ <span class="o">-</span> <span class="s2">&quot;/this/is/an/example/&quot;</span>
+
+<span class="n">release_stream_mappings</span><span class="p">:</span>
+  <span class="n">aus</span><span class="p">:</span>
+  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
+  <span class="n">eus</span><span class="p">:</span>
+  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
+  <span class="n">tus</span><span class="p">:</span>
+  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
+  <span class="n">e4s</span><span class="p">:</span>
+  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
+  <span class="n">other</span><span class="p">:</span>
+  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
+
+<span class="c1"># Maps an environment to its current and latest dist and beta RHEL releasevers.</span>
+<span class="n">env_to_releasever_mappings</span><span class="p">:</span>
+  <span class="n">qa</span><span class="p">:</span>
+    <span class="n">current_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">current_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">latest_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">latest_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+  <span class="n">stage</span><span class="p">:</span>
+    <span class="n">current_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">current_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">latest_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">latest_rhel0_dist</span><span class="p">:</span> <span class="n">null</span>
+  <span class="n">prod</span><span class="p">:</span>
+    <span class="n">current_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">current_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">latest_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+    <span class="n">latest_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+
+<span class="c1"># Workaround used to override cf-me&#39;s platform_full_version.</span>
+<span class="n">cfme_version_mappings</span><span class="p">:</span>
+  <span class="s2">&quot;0.0&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+
+<span class="c1"># Maps a RHEL variant substring to an expected TPS string.</span>
+<span class="n">tps_variant_mappings</span><span class="p">:</span>
+  <span class="s2">&quot;example-arch&quot;</span><span class="p">:</span> <span class="s2">&quot;Example-Variant&quot;</span>
+
+<span class="c1"># Workaround used to override the initial RHEL version</span>
+<span class="n">override_initial_rhel_release</span><span class="p">:</span>
+  <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+
+<span class="c1"># Maps an architecture to RHEL versions that do not include said architecture.</span>
+<span class="n">filter_arches_from_release</span><span class="p">:</span>
+  <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">example_64</span>
+
+<span class="c1"># Add your product ID here if your layered product&#39;s content sets identify a</span>
+<span class="c1"># &quot;layered_product_version&quot;, but you do not  wish to set the &quot;product_version&quot; field in your</span>
+<span class="c1"># repo&#39;s repo notes to your product&#39;s layered_product_version.</span>
+<span class="c1"># Does not apply to cert, openstack, openstack-director, openstack-optools, ose-3.0, or rhs.</span>
+<span class="n">ignore_lp_version_product_ids</span><span class="p">:</span>
+<span class="o">-</span> <span class="s2">&quot;000&quot;</span>
+
+<span class="c1"># The RHUI product ID. Used to identify RHUI repos that do not contain the &#39;rhui&#39; substring.</span>
+<span class="n">rhui_product_id</span><span class="p">:</span> <span class="s2">&quot;000&quot;</span>
+
+<span class="c1"># Maps a major RHEL version (platform_major_version), a layered product, or a platform to a list</span>
+<span class="c1"># of acceptable GA signing keys (ga_keys) and (optional) beta signing keys (beta_keys). The</span>
+<span class="c1"># default mapping is used to define default signing keys.</span>
+<span class="n">signing_keys_mappings</span><span class="p">:</span>
+  <span class="n">platform</span><span class="p">:</span>
+    <span class="n">example_platform</span><span class="p">:</span>
+      <span class="n">ga_keys</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;FFFFFFFF&quot;</span>
+      <span class="n">beta_keys</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;BBBBBBBB&quot;</span>
+    <span class="n">example_none</span><span class="p">:</span>
+      <span class="n">ga_keys</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="n">layered_product</span><span class="p">:</span>
+    <span class="n">example</span><span class="o">-</span><span class="n">lp</span><span class="p">:</span>
+      <span class="n">ga_keys</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;00000000&quot;</span>
+  <span class="n">major_version</span><span class="p">:</span>
+    <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+      <span class="n">ga_keys</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;00000000&quot;</span>
+      <span class="n">beta_keys</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;BBBBBBBB&quot;</span>
+  <span class="n">default</span><span class="p">:</span>
+    <span class="n">ga_keys</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s2">&quot;00000000&quot;</span>
+    <span class="n">beta_keys</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s2">&quot;BBBBBBBB&quot;</span>
+
+
+<span class="c1"># A list of RHEL releasevers (minor versions) that should be excluded from listing files</span>
+<span class="n">exclude_from_listings</span><span class="p">:</span>
+<span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -160,7 +257,170 @@ $id: http://release-engineering.github.io/cdn-definitions/schema.json
 
 
 definitions:
+  arch:
+    type: string
 
+  arch_list:
+    type: array
+    items:
+      $ref: &quot;#/definitions/arch&quot;
+    uniqueItems: true
+
+  release_version:
+    type: string
+    pattern: &quot;^[0-9]+\\.[0-9]+$&quot;
+
+  major_version:
+    type: integer
+
+  major_version_string:
+    type: string
+    pattern: &quot;^[0-9]+$&quot;
+
+  signing_key:
+    type: string
+    pattern: &quot;^[A-F0-9]{8}$&quot;
+
+  product_id:
+    type: string
+    pattern: &quot;^[0-9]+$&quot;
+
+
+  product_id_list:
+    type: array
+    items:
+      $ref: &quot;#/definitions/product_id&quot;
+    uniqueItems: true
+
+  signing_key_list:
+    type: array
+    items:
+      $ref: &quot;#/definitions/signing_key&quot;
+    uniqueItems: true
+
+  release_version_list:
+    type: array
+    items:
+      $ref: &quot;#/definitions/release_version&quot;
+    uniqueItems: true
+
+  major_or_release_version:
+    type: string
+    pattern: &quot;^[0-9]+(\\.[0-9]+)*$&quot;
+
+  # various product definition mappings
+  version_to_arch_list_mapping:
+    type: object
+    propertyNames:
+      $ref: &quot;#/definitions/major_version_string&quot;
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/arch_list&quot;
+    additionalProperties: false
+
+  major_to_release_version_mapping:
+    type: object
+    propertyNames:
+      $ref: &quot;#/definitions/major_version_string&quot;
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/release_version&quot;
+    additionalProperties: false
+
+  release_stream_mapping:
+    type: object
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/release_version_list&quot;
+    additionalProperties: false
+
+  current_latest_rhel_versions:
+    type: object
+    propertyNames:
+      type: string
+      pattern: &quot;^(current|latest)\\_rhel[0-9]+\\_(beta|dist)$&quot;
+    patternProperties:
+      &quot;.*&quot;:
+        anyOf:
+        - type: &quot;null&quot;
+        - $ref: &quot;#/definitions/release_version&quot;
+    additionalProperties: false
+
+  env_to_releasever_mapping:
+    type: object
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/current_latest_rhel_versions&quot;
+    additionalProperties: false
+
+  # TPS stream configuration
+  tps_variant_mapping:
+    type: object
+    patternProperties:
+      &quot;.*&quot;:
+        type: string
+    additionalProperties: false
+
+  # signing keys mappings
+  beta_and_ga_keys_mapping:
+    type: object
+    properties:
+      beta_keys:
+        $ref: &quot;#/definitions/signing_key_list&quot;
+      ga_keys:
+        $ref: &quot;#/definitions/signing_key_list&quot;
+    required:
+    - ga_keys
+    additionalProperties: false
+
+  major_version_to_signing_keys_mapping:
+    propertyNames:
+      $ref: &quot;#/definitions/major_version_string&quot;
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/beta_and_ga_keys_mapping&quot;
+    additionalProperties: false
+
+  string_to_signing_keys_mapping:
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/beta_and_ga_keys_mapping&quot;
+    additionalProperties: false
+
+  signing_keys_mapping:
+    type: object
+    properties:
+      default:
+        $ref: &quot;#/definitions/beta_and_ga_keys_mapping&quot;
+      layered_product:
+        $ref: &quot;#/definitions/string_to_signing_keys_mapping&quot;
+      platform:
+        $ref: &quot;#/definitions/string_to_signing_keys_mapping&quot;
+      major_version:
+        $ref: &quot;#/definitions/major_version_to_signing_keys_mapping&quot;
+    required:
+    - layered_product
+    - platform
+    - major_version
+    additionalProperties: false
+
+  # misc workarounds
+  exclude_versions_from_listings:
+    type: array
+    items:
+      $ref: &quot;#/definitions/release_version&quot;
+    uniqueItems: true
+
+  cfme_version_mappings_list:
+    type: object
+    propertyNames:
+      $ref: &quot;#/definitions/major_or_release_version&quot;
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/major_or_release_version&quot;
+    additionalProperties: false
+
+  # cdn configuration
   absolute_path:
     type: string
     pattern: &quot;^/&quot;
@@ -172,7 +432,7 @@ definitions:
         $ref: &quot;#/definitions/absolute_path&quot;
       dest:
         $ref: &quot;#/definitions/absolute_path&quot;
-    requiredProperties:
+    required:
     - src
     - dest
     additionalProperties: false
@@ -183,6 +443,11 @@ definitions:
       $ref: &quot;#/definitions/path_alias&quot;
     uniqueItems: true
 
+  symlink_exception_list:
+    type: array
+    items:
+      $ref: &quot;#/definitions/absolute_path&quot;
+    uniqueItems: true
 
 type: object
 properties:
@@ -197,10 +462,54 @@ properties:
   origin_alias:
     $ref: &quot;#/definitions/path_alias_list&quot;
 
+  symlink_exceptions:
+    $ref: &quot;#/definitions/symlink_exception_list&quot;
+
+  release_stream_mappings:
+    $ref: &quot;#/definitions/release_stream_mapping&quot;
+
+  env_to_releasever_mappings:
+    $ref: &quot;#/definitions/env_to_releasever_mapping&quot;
+
+  cfme_version_mappings:
+    $ref: &quot;#/definitions/cfme_version_mappings_list&quot;
+
+  tps_variant_mappings:
+    $ref: &quot;#/definitions/tps_variant_mapping&quot;
+
+  override_initial_rhel_release:
+    $ref: &quot;#/definitions/major_to_release_version_mapping&quot;
+
+  filter_arches_from_release:
+    $ref: &quot;#/definitions/version_to_arch_list_mapping&quot;
+
+  signing_keys_mappings:
+    $ref: &quot;#/definitions/signing_keys_mapping&quot;
+
+  rhui_product_id:
+    $ref: &quot;#/definitions/product_id&quot;
+
+  ignore_lp_version_product_ids:
+    $ref: &quot;#/definitions/product_id_list&quot;
+
+  exclude_from_listings:
+    $ref: &quot;#/definitions/exclude_versions_from_listings&quot;
+
 requiredProperties:
 - version
 - rhui_alias
 - origin_alias
+- symlink_exceptions
+- release_stream_mappings
+- env_to_releasever_mappings
+- cfme_version_mappings
+- tps_variant_mappings
+- filter_arch_from_releases
+- override_initial_rhel_release
+- signing_keys_mappings
+- rhui_product_id
+- ignore_lp_version_product_ids
+- exclude_from_listings
 
 additionalProperties: false
 </pre></div>
@@ -274,7 +583,7 @@ additionalProperties: false
       &copy;2020, Red Hat.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
