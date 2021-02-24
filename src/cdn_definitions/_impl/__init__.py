@@ -18,19 +18,20 @@ def parsed(data, ext):
     )
 
 
-def get_remote_data(url):
+def get_remote_data(url, session=None):
     """
     Creates a requests session with retries. If the request was successful, returns the response.
     """
     retry_strategy = Retry(
         status_forcelist=[429, 500, 502, 503, 504],
     )
-    adapter = requests.adapters.HTTPAdapter(max_retries=retry_strategy)
-    session = requests.Session()
-    session.mount(url, adapter)
+
+    if not session:
+        session = requests.Session()
+        adapter = requests.adapters.HTTPAdapter(max_retries=retry_strategy)
+        session.mount(url, adapter)
 
     response = session.get(url, timeout=10)
-
     response.raise_for_status()
     return response
 
@@ -43,7 +44,7 @@ def get_local_data(data_path):
         return data_file.read()
 
 
-def get_data(data_paths):
+def get_data(data_paths, session=None):
     """
     Returns the parsed data at a URL or local file path.
     If data cannot be loaded, raises a RuntimeError.
@@ -52,18 +53,21 @@ def get_data(data_paths):
         _, ext = os.path.splitext(path)
 
         if path.startswith("http"):
-            return parsed(get_remote_data(path), ext)
+            return parsed(get_remote_data(path, session), ext)
 
         if os.path.exists(path):
             return parsed(get_local_data(path), ext)
     raise RuntimeError("Could not load data")
 
 
-def load_data(source=None):
-    """Loads data from a YAML or JSON file into a Python object.
+def load_data(source=None, session=None):
+    """Loads data from a YAML or JSON file into a Python object. If a requests.Session is provided
+    in the "session" parameter, any HTTP request issued while loading data will use the given
+    session.
 
     Args:
         source (str, optional): A local path or URL to a JSON or YAML data file.
+        session (requests.Session, optional): A session to provide to HTTP requests.
 
     Returns:
         The data from the local path or URL, coerced into a Python object.
@@ -83,8 +87,8 @@ def load_data(source=None):
         if "CDN_DEFINITIONS_PATH" in os.environ:
             candidate_paths.insert(0, os.environ["CDN_DEFINITIONS_PATH"])
 
-        return get_data(candidate_paths)
-    return get_data([source])
+        return get_data(candidate_paths, session)
+    return get_data([source], session)
 
 
 def load_schema():
