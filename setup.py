@@ -14,6 +14,11 @@ def get_long_description():
     return text[idx:]
 
 
+def get_requirements():
+    with open("requirements.txt") as f:
+        return f.read().splitlines()
+
+
 setup(
     name="cdn-definitions",
     version="1.3.0",
@@ -27,6 +32,7 @@ setup(
     include_package_data=True,
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
+    install_requires=get_requirements(),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
