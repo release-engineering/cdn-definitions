@@ -10,17 +10,12 @@ Data definitions for Red Hat's content delivery network.
 - [Documentation](https://release-engineering.github.io/cdn-definitions/)
 - [PyPI](https://pypi.org/project/cdn-definitions)
 
-This project maintains a dataset defining and influencing certain behaviors
+This project assists with the maintenance of a dataset influencing certain behaviors
 of Red Hat's CDN, such as aliases between paths.
-
-To get an idea of the type of data maintained within this project, you can
-[browse the latest published dataset](https://release-engineering.github.io/cdn-definitions/data.yaml).
 
 See the
 [User Guide](https://release-engineering.github.io/cdn-definitions/userguide.html#) for more information
-if you are interested in consuming this data, or the
-[Maintenance Guide](https://release-engineering.github.io/cdn-definitions/maint.html#) if you need
-to make changes.
+if you are interested in consuming this data.
 
 License
 -------
