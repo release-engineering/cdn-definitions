@@ -82,11 +82,16 @@ the <code class="docutils literal notranslate"><span class="pre">cdn_definitions
 <h3>Python reference<a class="headerlink" href="#python-reference" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-cdn_definitions"></span><dl class="py function">
 <dt id="cdn_definitions.load_data">
-<code class="sig-prename descclassname"><span class="pre">cdn_definitions.</span></code><code class="sig-name descname"><span class="pre">load_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cdn_definitions.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads data from a YAML or JSON file into a Python object.</p>
+<code class="sig-prename descclassname"><span class="pre">cdn_definitions.</span></code><code class="sig-name descname"><span class="pre">load_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cdn_definitions.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads data from a YAML or JSON file into a Python object. If a requests.Session is provided
+in the “session” parameter, any HTTP request issued while loading data will use the given
+session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – A local path or URL to a JSON or YAML data file.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – A local path or URL to a JSON or YAML data file.</p></li>
+<li><p><strong>session</strong> (<em>requests.Session</em><em>, </em><em>optional</em>) – A session to provide to HTTP requests.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The data from the local path or URL, coerced into a Python object.</p>
