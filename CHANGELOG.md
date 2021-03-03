@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- n/a
+
+## [2.0.0] - 2021-03-04
+
 ### Changed
 
 - The concept of the project has changed significantly. The `cdn-definitions` project
@@ -62,7 +66,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/release-engineering/cdn-definitions/compare/v1.3.0...v2.0.0
 [1.3.0]: https://github.com/release-engineering/cdn-definitions/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/release-engineering/cdn-definitions/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/release-engineering/cdn-definitions/compare/v1.0.0...v1.1.0
