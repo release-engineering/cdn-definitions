@@ -2,30 +2,6 @@ User Guide
 ==========
 
 
-Usage as online dataset
------------------------
-
-The latest version of this dataset can be downloaded at any time from URLs:
-
-- https://release-engineering.github.io/cdn-definitions/data.json
-- https://release-engineering.github.io/cdn-definitions/data.yaml
-
-Both files contain equivalent data.
-
-
-
-
-Usage as packaged dataset
--------------------------
-
-This dataset is available as an RPM from selected Red Hat internal repositories.
-
-- Enable ``eng-rhel-6``, ``eng-rhel-7`` or equivalent yum repository on the target system.
-- Install the ``cdn-definitions`` package. This package has no dependencies.
-- Load data from ``/usr/share/cdn-definitions/data.json``
-  or ``/usr/share/cdn-definitions/data.yaml``.
-
-
 Usage as Python library
 -----------------------
 
@@ -50,13 +26,22 @@ the ``cdn_definitions`` module, as in example:
        # my path falls under a /rhui/ alias,
        # so now do something special
 
-If a source is not specified, the library will use data from the first existing of the following sources:
+If a source is not specified, the library will use data from the first existing of the following
+sources:
 
 - A JSON or YAML file pointed at by the ``CDN_DEFINITIONS_PATH`` environment variable.
 - The file bundled with the library on PyPI.
 - ``/usr/share/cdn-definitions/data.yaml``.
 
-To ensure the most up-to-date definitions, upgrade the package from PyPI.
+Note that loading from the release-engineering/cdn-definitions repo as seen above will yield
+placeholder/reference data. This reference data aims to give a general idea of the data's
+structure and purpose, and also enable automated testing within downstream projects consuming
+cdn-definitions.
+
+However, in production scenarios it will be necessary to deploy your code pointing at a genuine
+data set. This will typically be accomplished either by calling ``load_data`` passing the URL of
+an internal data set, or ensuring that ``CDN_DEFINITIONS_PATH`` is set appropriately where your
+code is deployed.
 
 
 Python reference
