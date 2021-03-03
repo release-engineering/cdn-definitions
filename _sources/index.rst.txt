@@ -8,5 +8,4 @@ Data definitions for Red Hat's content delivery network.
    :caption: Contents:
 
    userguide
-   maint
    data

@@ -14,7 +14,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Maintenance Guide" href="maint.html" />
+    <link rel="next" title="Data" href="data.html" />
     <link rel="prev" title="cdn-definitions" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -34,25 +34,6 @@
             
   <div class="section" id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="usage-as-online-dataset">
-<h2>Usage as online dataset<a class="headerlink" href="#usage-as-online-dataset" title="Permalink to this headline">¶</a></h2>
-<p>The latest version of this dataset can be downloaded at any time from URLs:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/data.json">https://release-engineering.github.io/cdn-definitions/data.json</a></p></li>
-<li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/data.yaml">https://release-engineering.github.io/cdn-definitions/data.yaml</a></p></li>
-</ul>
-<p>Both files contain equivalent data.</p>
-</div>
-<div class="section" id="usage-as-packaged-dataset">
-<h2>Usage as packaged dataset<a class="headerlink" href="#usage-as-packaged-dataset" title="Permalink to this headline">¶</a></h2>
-<p>This dataset is available as an RPM from selected Red Hat internal repositories.</p>
-<ul class="simple">
-<li><p>Enable <code class="docutils literal notranslate"><span class="pre">eng-rhel-6</span></code>, <code class="docutils literal notranslate"><span class="pre">eng-rhel-7</span></code> or equivalent yum repository on the target system.</p></li>
-<li><p>Install the <code class="docutils literal notranslate"><span class="pre">cdn-definitions</span></code> package. This package has no dependencies.</p></li>
-<li><p>Load data from <code class="docutils literal notranslate"><span class="pre">/usr/share/cdn-definitions/data.json</span></code>
-or <code class="docutils literal notranslate"><span class="pre">/usr/share/cdn-definitions/data.yaml</span></code>.</p></li>
-</ul>
-</div>
 <div class="section" id="usage-as-python-library">
 <h2>Usage as Python library<a class="headerlink" href="#usage-as-python-library" title="Permalink to this headline">¶</a></h2>
 <p>This project is usable as a Python library.</p>
@@ -71,13 +52,21 @@ the <code class="docutils literal notranslate"><span class="pre">cdn_definitions
     <span class="c1"># so now do something special</span>
 </pre></div>
 </div>
-<p>If a source is not specified, the library will use data from the first existing of the following sources:</p>
+<p>If a source is not specified, the library will use data from the first existing of the following
+sources:</p>
 <ul class="simple">
 <li><p>A JSON or YAML file pointed at by the <code class="docutils literal notranslate"><span class="pre">CDN_DEFINITIONS_PATH</span></code> environment variable.</p></li>
 <li><p>The file bundled with the library on PyPI.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/usr/share/cdn-definitions/data.yaml</span></code>.</p></li>
 </ul>
-<p>To ensure the most up-to-date definitions, upgrade the package from PyPI.</p>
+<p>Note that loading from the release-engineering/cdn-definitions repo as seen above will yield
+placeholder/reference data. This reference data aims to give a general idea of the data’s
+structure and purpose, and also enable automated testing within downstream projects consuming
+cdn-definitions.</p>
+<p>However, in production scenarios it will be necessary to deploy your code pointing at a genuine
+data set. This will typically be accomplished either by calling <code class="docutils literal notranslate"><span class="pre">load_data</span></code> passing the URL of
+an internal data set, or ensuring that <code class="docutils literal notranslate"><span class="pre">CDN_DEFINITIONS_PATH</span></code> is set appropriately where your
+code is deployed.</p>
 <div class="section" id="python-reference">
 <h3>Python reference<a class="headerlink" href="#python-reference" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-cdn_definitions"></span><dl class="py function">
@@ -141,12 +130,9 @@ session.</p>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#usage-as-online-dataset">Usage as online dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage-as-packaged-dataset">Usage as packaged dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage-as-python-library">Usage as Python library</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="maint.html">Maintenance Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 </ul>
 
@@ -155,7 +141,7 @@ session.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">cdn-definitions</a></li>
-      <li>Next: <a href="maint.html" title="next chapter">Maintenance Guide</a></li>
+      <li>Next: <a href="data.html" title="next chapter">Data</a></li>
   </ul></li>
 </ul>
 </div>

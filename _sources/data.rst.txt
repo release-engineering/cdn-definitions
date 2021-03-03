@@ -4,7 +4,7 @@ Data
 CDN definitions
 ---------------
 
-This dataset contains the latest version of CDN definitions.
+This dataset contains placeholder/reference data.
 
 It is also available in raw JSON or YAML format at URLs:
 
