@@ -35,12 +35,8 @@
     ],
     "origin_alias": [
         {
-            "dest": "/origin",
-            "src": "/content/origin"
-        },
-        {
-            "dest": "/origin/rpms",
-            "src": "/origin/rpm"
+            "dest": "/origin/examples",
+            "src": "/origin/example"
         }
     ],
     "override_initial_rhel_release": {
@@ -65,80 +61,8 @@
     },
     "rhui_alias": [
         {
-            "dest": "/content/aus/rhel8",
-            "src": "/content/aus/rhel8/rhui"
-        },
-        {
-            "dest": "/content/aus/rhel",
-            "src": "/content/aus/rhel/rhui"
-        },
-        {
-            "dest": "/content/beta/rhel8",
-            "src": "/content/beta/rhel8/rhui"
-        },
-        {
-            "dest": "/content/beta/rhel-alt",
-            "src": "/content/beta/rhel-alt/rhui"
-        },
-        {
-            "dest": "/content/beta/rhel",
-            "src": "/content/beta/rhel/rhui"
-        },
-        {
-            "dest": "/content/beta/rhs",
-            "src": "/content/beta/rhs/rhui"
-        },
-        {
-            "dest": "/content/dist/layered",
-            "src": "/content/dist/layered/rhui"
-        },
-        {
-            "dest": "/content/dist/middleware",
-            "src": "/content/dist/middleware/rhui"
-        },
-        {
-            "dest": "/content/dist/rhel8",
-            "src": "/content/dist/rhel8/rhui"
-        },
-        {
-            "dest": "/content/dist/rhel-alt",
-            "src": "/content/dist/rhel-alt/rhui"
-        },
-        {
-            "dest": "/content/dist/rhel",
-            "src": "/content/dist/rhel/rhui"
-        },
-        {
-            "dest": "/content/dist/rhes",
-            "src": "/content/dist/rhes/rhui"
-        },
-        {
-            "dest": "/content/dist/rhs",
-            "src": "/content/dist/rhs/rhui"
-        },
-        {
-            "dest": "/content/e4s/rhel8",
-            "src": "/content/e4s/rhel8/rhui"
-        },
-        {
-            "dest": "/content/e4s/rhel",
-            "src": "/content/e4s/rhel/rhui"
-        },
-        {
-            "dest": "/content/els/rhel",
-            "src": "/content/els/rhel/rhui"
-        },
-        {
-            "dest": "/content/eus/rhel8",
-            "src": "/content/eus/rhel8/rhui"
-        },
-        {
-            "dest": "/content/eus/rhel",
-            "src": "/content/eus/rhel/rhui"
-        },
-        {
-            "dest": "/content/rc/rhel",
-            "src": "/content/rc/rhel/rhui"
+            "dest": "/content/dist/rhel/X",
+            "src": "/content/dist/rhel/rhui/X"
         }
     ],
     "rhui_product_id": "000",
@@ -188,5 +112,5 @@
     "tps_variant_mappings": {
         "example-arch": "Example-Variant"
     },
-    "version": "1.1.0"
+    "version": "1.1.1"
 }
