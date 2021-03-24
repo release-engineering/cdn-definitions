@@ -63,6 +63,9 @@
             "0.0"
         ]
     },
+    "rhel_open_dist": [
+        0
+    ],
     "rhui_alias": [
         {
             "dest": "/content/aus/rhel8",
@@ -188,5 +191,5 @@
     "tps_variant_mappings": {
         "example-arch": "Example-Variant"
     },
-    "version": "1.1.0"
+    "version": "1.2.0"
 }
