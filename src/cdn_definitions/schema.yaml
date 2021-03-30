@@ -27,6 +27,12 @@ definitions:
   major_version:
     type: integer
 
+  major_version_list:
+    type: array
+    items:
+      $ref: "#/definitions/major_version"
+    uniqueItems: true
+
   major_version_string:
     type: string
     pattern: "^[0-9]+$"
@@ -239,6 +245,9 @@ properties:
 
   signing_keys_mappings:
     $ref: "#/definitions/signing_keys_mapping"
+
+  rhel_open_dist:
+    $ref: "#/definitions/major_version_list"
 
   rhui_product_id:
     $ref: "#/definitions/product_id"

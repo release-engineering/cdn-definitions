@@ -99,6 +99,13 @@
         "major_version": {
             "type": "integer"
         },
+        "major_version_list": {
+            "items": {
+                "$ref": "#/definitions/major_version"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
         "major_version_string": {
             "pattern": "^[0-9]+$",
             "type": "string"
@@ -263,6 +270,9 @@
         },
         "release_stream_mappings": {
             "$ref": "#/definitions/release_stream_mapping"
+        },
+        "rhel_open_dist": {
+            "$ref": "#/definitions/major_version_list"
         },
         "rhui_alias": {
             "$ref": "#/definitions/path_alias_list"
