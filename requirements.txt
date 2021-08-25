@@ -1,2 +1,4 @@
+frozendict
+frozenlist2
 PyYAML
 requests

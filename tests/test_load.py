@@ -1,8 +1,9 @@
 import os
 import json
 
+from frozendict import frozendict
+from frozenlist2 import frozenlist
 import pytest
-import requests
 import requests_mock
 
 from cdn_definitions import load_data, load_schema
@@ -10,26 +11,30 @@ from cdn_definitions import load_data, load_schema
 
 def test_can_load_custom_json_data(monkeypatch, tmpdir):
     json_file = tmpdir.join("myfile.json")
-    json_file.write('{"hello": "json"}')
+    json_file.write('{"hello": ["from", "json"]}')
 
     # If we set an env var pointing at the above JSON file, the library
     # should load it instead of the bundled data
     monkeypatch.setenv("CDN_DEFINITIONS_PATH", str(json_file))
     data = load_data()
 
-    assert data == {"hello": "json"}
+    assert data == {"hello": ["from", "json"]}
+    assert isinstance(data, frozendict)
+    assert isinstance(data["hello"], frozenlist)
 
 
 def test_can_load_custom_yaml_data(monkeypatch, tmpdir):
     yaml_file = tmpdir.join("myfile.yaml")
-    yaml_file.write("hello: yaml")
+    yaml_file.write("hello:\n  - from\n  - yaml")
 
     # If we set an env var pointing at the above YAML file, the library
     # should load it instead of the bundled data
     monkeypatch.setenv("CDN_DEFINITIONS_PATH", str(yaml_file))
     data = load_data()
 
-    assert data == {"hello": "yaml"}
+    assert data == {"hello": ["from", "yaml"]}
+    assert isinstance(data, frozendict)
+    assert isinstance(data["hello"], frozenlist)
 
 
 @pytest.mark.parametrize(
