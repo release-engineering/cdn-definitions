@@ -109,9 +109,8 @@ def load_schema():
     Returns:
         The cdn-definitions schema, coerced into a Python object.
     """
-    with open(
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), "schema.json")
-    ) as schema:
+    schema_filename = os.path.join(os.path.dirname(__file__), "../schema.json")
+    with open(schema_filename) as schema:  # pylint: disable=unspecified-encoding
         return json.load(schema)
 
 
