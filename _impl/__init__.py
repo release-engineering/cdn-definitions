@@ -4,7 +4,18 @@ import warnings
 
 import requests
 import yaml
-from urllib3.util.retry import Retry
+
+# Requests module historically (>=0.8.0) bundled its own urllib3,
+# however it may depend on how the module is installed, as some
+# distributions (e.g. RHEL-7) ship the same version of requests
+# module without bundled urllib3 and add a compat layer aliasing
+# requests.packages.urllib3 to non-bundled urllib3.
+# New versions (>=2.16) of the requests module stopped bundling
+# urllib3 and added a different backwards-compat layer to retain
+# requests.packages.* imports, however that layer is nontransparent
+# to static analyzers such as pylint, hence the disable=import-error
+# annotation even though the actual import still works.
+from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
 
 
 def parsed(data, ext):
@@ -98,9 +109,8 @@ def load_schema():
     Returns:
         The cdn-definitions schema, coerced into a Python object.
     """
-    with open(
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), "schema.json")
-    ) as schema:
+    schema_filename = os.path.join(os.path.dirname(__file__), "../schema.json")
+    with open(schema_filename) as schema:  # pylint: disable=unspecified-encoding
         return json.load(schema)
 
 
