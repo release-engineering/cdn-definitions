@@ -17,16 +17,46 @@ import yaml
 # annotation even though the actual import still works.
 from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
 
+# It is preferred to return the data as immutable when possible
+try:
+    from frozendict import frozendict
+except ImportError:  # pragma: no cover
+    # If frozendict is not available, fall back to builtin dict
+    frozendict = dict  # pylint: disable=invalid-name
+try:
+    from frozenlist2 import frozenlist
+except ImportError:  # pragma: no cover
+    # If frozenlist is not available, fall back to builtin list
+    frozenlist = list  # pylint: disable=invalid-name
+
+
+def freeze(node):
+    """
+    Converts dict to frozendict and list to frozenlist.
+    """
+    if isinstance(node, list):
+        # Iterating using index instead of enumeration
+        # so we can replace the list items in place
+        for index in range(len(node)):  # pylint: disable=consider-using-enumerate
+            node[index] = freeze(node[index])
+        return frozenlist(node)
+    if isinstance(node, dict):
+        for key, value in node.items():
+            node[key] = freeze(value)
+        return frozendict(node)
+    return node
+
 
 def parsed(data, ext):
     """
     Parses a JSON or YAML string or a requests.Response object.
     """
+    is_response = isinstance(data, requests.Response)
     if ext.lower() == ".json":
-        return data.json() if isinstance(data, requests.Response) else json.loads(data)
-    return yaml.load(
-        data.text if isinstance(data, requests.Response) else data, yaml.SafeLoader
-    )
+        parsed_data = data.json() if is_response else json.loads(data)
+    else:
+        parsed_data = yaml.safe_load(data.text if is_response else data)
+    return freeze(parsed_data)
 
 
 def get_remote_data(url, session=None):
