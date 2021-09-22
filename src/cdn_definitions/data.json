@@ -46,6 +46,7 @@
     "override_initial_rhel_release": {
         "0": "0.0"
     },
+    "populate_ubi_dot_repos": true,
     "release_stream_mappings": {
         "aus": [
             "0.0"
