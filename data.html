@@ -238,6 +238,10 @@
 <span class="c1"># future. Versions not listed here are exempt from various tooling.</span>
 <span class="n">rhel_open_dist</span><span class="p">:</span>
 <span class="o">-</span> <span class="mi">0</span>
+
+<span class="c1"># If set to False, ubi_population repo note will be set False for all ubi DOT repos and</span>
+<span class="c1"># no ubi DOT repo will be populated.</span>
+<span class="n">populate_ubi_dot_repos</span><span class="p">:</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </section>
@@ -510,6 +514,9 @@ properties:
   exclude_from_listings:
     $ref: &quot;#/definitions/exclude_versions_from_listings&quot;
 
+  populate_ubi_dot_repos:
+    type: boolean
+
 requiredProperties:
 - version
 - rhui_alias
@@ -525,6 +532,7 @@ requiredProperties:
 - rhui_product_id
 - ignore_lp_version_product_ids
 - exclude_from_listings
+- populate_ubi_dot_repos
 
 additionalProperties: false
 </pre></div>
@@ -597,7 +605,7 @@ additionalProperties: false
       &copy;2020, Red Hat.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

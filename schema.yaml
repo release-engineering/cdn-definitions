@@ -258,6 +258,9 @@ properties:
   exclude_from_listings:
     $ref: "#/definitions/exclude_versions_from_listings"
 
+  populate_ubi_dot_repos:
+    type: boolean
+
 requiredProperties:
 - version
 - rhui_alias
@@ -273,5 +276,6 @@ requiredProperties:
 - rhui_product_id
 - ignore_lp_version_product_ids
 - exclude_from_listings
+- populate_ubi_dot_repos
 
 additionalProperties: false

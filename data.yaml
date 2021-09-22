@@ -194,3 +194,7 @@ exclude_from_listings:
 # future. Versions not listed here are exempt from various tooling.
 rhel_open_dist:
 - 0
+
+# If set to False, ubi_population repo note will be set False for all ubi DOT repos and
+# no ubi DOT repo will be populated.
+populate_ubi_dot_repos: True
