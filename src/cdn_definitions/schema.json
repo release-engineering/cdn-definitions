@@ -274,6 +274,9 @@
         "release_stream_mappings": {
             "$ref": "#/definitions/release_stream_mapping"
         },
+        "releasever_alias": {
+            "$ref": "#/definitions/path_alias_list"
+        },
         "rhel_open_dist": {
             "$ref": "#/definitions/major_version_list"
         },

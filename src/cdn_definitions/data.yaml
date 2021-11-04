@@ -94,6 +94,25 @@ origin_alias:
   dest: /origin/rpms
 
 
+# Aliases between two RHEL-X repositories, both of which contain the latest RHEL-X release.
+releasever_alias:
+
+# Each item defines a "src" (a floating RHEL-X repository that always contains the latest content
+# for a major RHEL release) and a "dest" (a RHEL-X.Y repository, containing the published content
+# for the latest minor release version of RHEL-X).
+#
+# For example, /content/dist/rhelX/X should be an alias for /content/dist/rhelX/X.Y, where X is a
+# major version of RHEL and X.Y is a minor version of RHEL.
+#
+# These aliases are intended for use with product versions no longer receiving releases, i.e. those
+# not covered by rhel_open_dist. For currently active versions, aliases are instead derived from
+# other fields such as env_to_releasever_mappings.
+- src: /content/dist/rhel0/0
+  dest: /content/dist/rhel0/0.9
+- src: /content/dist/rhel1/1
+  dest: /content/dist/rhel1/1.11
+
+
 # Content set prefixes which should be using symlinks at the $releasever level
 # according to normal business logic, but for historical reasons are exempt
 # and instead do not use symlinks.
