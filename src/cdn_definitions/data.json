@@ -64,6 +64,16 @@
             "0.0"
         ]
     },
+    "releasever_alias": [
+        {
+            "dest": "/content/dist/rhel0/0.9",
+            "src": "/content/dist/rhel0/0"
+        },
+        {
+            "dest": "/content/dist/rhel1/1.11",
+            "src": "/content/dist/rhel1/1"
+        }
+    ],
     "rhel_open_dist": [
         0
     ],

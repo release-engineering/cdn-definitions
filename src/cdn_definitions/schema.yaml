@@ -222,6 +222,9 @@ properties:
   origin_alias:
     $ref: "#/definitions/path_alias_list"
 
+  releasever_alias:
+    $ref: "#/definitions/path_alias_list"
+
   symlink_exceptions:
     $ref: "#/definitions/symlink_exception_list"
 
