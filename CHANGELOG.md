@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [2.3.0] - 2021-11-09
+
+### Added
+
+- `releasever_alias` - Maps a major RHEL release version path prefix to the corresponding minor
+   RHEL release version path prefix. Only applies to RHEL versions that are not expecting new
+   minor releases.
+
 ## [2.2.0] - 2021-09-29
 
 ### Added
@@ -82,7 +90,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/release-engineering/cdn-definitions/compare/v1.3.0...v2.0.0
