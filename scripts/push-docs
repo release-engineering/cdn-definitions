@@ -10,7 +10,7 @@ git init
 git config user.name "${GITHUB_AUTHOR:-doc bot}"
 git config user.email "${GITHUB_EMAIL:-rmcgover@redhat.com}"
 
-git remote add origin "https://$GITHUB_TOKEN@github.com/release-engineering/cdn-definitions.git"
+git remote add origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 git fetch origin
 git reset origin/gh-pages || true
 
