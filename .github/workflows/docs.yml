@@ -1,0 +1,27 @@
+name: Publish documentation
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - v*
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Install Tox
+        run: pip install tox
+      - name: Run Tox
+        run: tox -e docs
+        # FIXME: I can do this with an action as well:
+        # https://github.com/marketplace/actions/deploy-github-pages-site
+      - name: Upload docs to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: scripts/push-docs
