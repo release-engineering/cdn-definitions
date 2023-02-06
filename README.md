@@ -4,7 +4,7 @@ cdn-definitions
 Data definitions for Red Hat's content delivery network.
 
 ![Build Status](https://github.com/release-engineering/cdn-definitions/actions/workflows/tests.yml/badge.svg)
-[![codecov](https://codecov.io/gh/release-engineering/cdn-definitions/branch/master/graph/badge.svg?token=PYTFAS3DTC)](https://codecov.io/gh/jm-wk/cdn-definitions)
+[![codecov](https://codecov.io/gh/release-engineering/cdn-definitions/branch/master/graph/badge.svg?token=UFA82N1J4J)](https://codecov.io/gh/release-engineering/cdn-definitions)
 
 - [Source](https://github.com/release-engineering/cdn-definitions)
 - [Documentation](https://release-engineering.github.io/cdn-definitions/)
