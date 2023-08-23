@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import json
 import yaml
@@ -7,28 +5,19 @@ import yaml
 from . import ROOT_PATH
 
 
-@pytest.fixture(params=["data", "schema"])
-def any_basename(request):
-    yield request.param
-
-
-def test_data_sync(any_basename):
+@pytest.mark.parametrize("basename", ["data", "schema"])
+def test_data_sync(basename):
     """Verify that .json files are up-to-date with .yaml files."""
-    yaml_path = os.path.join(
-        ROOT_PATH, "src", "cdn_definitions", "%s.yaml" % any_basename
-    )
-    json_path = os.path.join(
-        ROOT_PATH, "src", "cdn_definitions", "%s.json" % any_basename
-    )
+    yaml_path = ROOT_PATH / f"src/cdn_definitions/{basename}.yaml"
+    json_path = ROOT_PATH / f"src/cdn_definitions/{basename}.json"
 
-    with open(yaml_path) as f:
-        yaml_data = yaml.load(f, yaml.SafeLoader)
+    with yaml_path.open(encoding="utf-8") as f:
+        yaml_data = yaml.safe_load(f)
 
-    with open(json_path) as f:
+    with json_path.open(encoding="utf-8") as f:
         json_data = json.load(f)
 
-    message = "%s and %s differ! Consider running `scripts/make-json'." % (
-        yaml_path,
-        json_path,
+    message = (
+        f"{yaml_path} and {json_path} differ! Consider running `scripts/make-json'."
     )
     assert yaml_data == json_data, message
