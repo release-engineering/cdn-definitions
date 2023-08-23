@@ -74,6 +74,33 @@
             "src": "/content/dist/rhel1/1"
         }
     ],
+    "repo_overrides": {
+        "prod": [
+            {
+                "key": "example",
+                "if_match_path": "/content/dist/rhel9/",
+                "value": true
+            },
+            {
+                "key": "example",
+                "if_created_after": "2023-06-01T14:00:00Z",
+                "if_match_id": "rhel-8",
+                "value": true
+            }
+        ],
+        "stage": [
+            {
+                "key": "example",
+                "if_match_id": ".",
+                "value": true
+            },
+            {
+                "key": "example",
+                "if_match_id": "e2e.*rhel-8",
+                "value": false
+            }
+        ]
+    },
     "rhel_open_dist": [
         0
     ],
@@ -202,5 +229,5 @@
     "tps_variant_mappings": {
         "example-arch": "Example-Variant"
     },
-    "version": "1.2.0"
+    "version": "1.3.0"
 }

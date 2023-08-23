@@ -2,7 +2,7 @@ import pytest
 import yaml
 import jsonschema
 
-from jsonschema import ValidationError
+from jsonschema import Draft7Validator, ValidationError
 
 from . import ROOT_PATH
 
@@ -13,7 +13,7 @@ SCHEMA_PATH = ROOT_PATH / "src/cdn_definitions/schema.yaml"
 def validate(instance):
     with SCHEMA_PATH.open(encoding="utf-8") as f:
         schema = yaml.safe_load(f)
-    jsonschema.validate(instance, schema)
+    jsonschema.validate(instance, schema, format_checker=Draft7Validator.FORMAT_CHECKER)
 
 
 @pytest.fixture(name="data")
@@ -75,5 +75,13 @@ def test_current_latest_rhel_string(data, test_data):
     data["env_to_releasever_mappings"]["prod"] = {test_data: "3.1"}
     data["env_to_releasever_mappings"]["stage"] = {test_data: "3.1"}
     data["env_to_releasever_mappings"]["qa"] = {test_data: "3.1"}
+    with pytest.raises(ValidationError):
+        validate(data)
+
+
+def test_repo_override_not_match_schema(data):
+    """Verify that a repo override without if_* condition does NOT match the schema."""
+
+    del data["repo_overrides"]["stage"][0]["if_match_id"]
     with pytest.raises(ValidationError):
         validate(data)
