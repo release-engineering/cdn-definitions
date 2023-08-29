@@ -1,3 +1,4 @@
 pytest
-jsonschema
+jsonschema[format]
 requests-mock
+rfc3339-validator

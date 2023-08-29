@@ -1,7 +1,7 @@
 ---
 # Version of this data structure's format.
 # Version string is maintained in accordance with SemVer.
-version: "1.2.0"
+version: "1.3.0"
 
 # Aliases between paths used for consuming content under RHUI entitlements.
 #
@@ -217,3 +217,33 @@ rhel_open_dist:
 # If set to False, ubi_population repo note will be set False for all ubi DOT repos and
 # no ubi DOT repo will be populated.
 populate_ubi_dot_repos: True
+
+# repo_overrides can be used to define mappings between certain criteria matching CDN repos
+# and configuration which should be set on those repos. The intended usage is to allow
+# for fine-grained and (usually) temporary deviations from the baseline configuration.
+# Allowed value types are boolean, string, integer or float.
+repo_overrides:
+  stage:
+    # everything is flagged by default
+    - if_match_id: .
+      key: example
+      value: true
+
+    # but let's keep at least some e2e repos without the flag so the
+    # old behavior continues to be tested
+    - if_match_id: e2e.*rhel-8
+      key: example
+      value: false
+
+  prod:
+    # rhel9 content identified by subtree should be flagged
+    - if_match_path: /content/dist/rhel9/
+      key: example
+      value: true
+
+    # rhel8 content identified by pulp repo ID created after a certain date
+    # should be flagged
+    - if_match_id: rhel-8
+      if_created_after: "2023-06-01T14:00:00Z"
+      key: example
+      value: true
