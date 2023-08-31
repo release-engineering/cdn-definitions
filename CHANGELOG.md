@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [3.0.0] - 2023-08-30
+
+### Added
+
+- `repo_overrides` - Used to define, per environment, mappings between certain criteria matching
+CDN repos and feature flags which should be enabled on those repos.
+
+### Removed
+
+- Python2 support has been dropped.
+
 ## [2.3.0] - 2021-11-09
 
 ### Added
@@ -90,7 +101,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.3.0...v3.0.0
 [2.3.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.0.0...v2.1.0
