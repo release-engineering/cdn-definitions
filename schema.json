@@ -80,6 +80,17 @@
             "type": "array",
             "uniqueItems": true
         },
+        "iso8601_datetime": {
+            "anyOf": [
+                {
+                    "format": "date"
+                },
+                {
+                    "format": "date-time"
+                }
+            ],
+            "type": "string"
+        },
         "major_or_release_version": {
             "pattern": "^[0-9]+(\\.[0-9]+)*$",
             "type": "string"
@@ -174,6 +185,79 @@
             },
             "type": "array",
             "uniqueItems": true
+        },
+        "repo_override": {
+            "additionalProperties": false,
+            "allOf": [
+                {
+                    "required": [
+                        "key",
+                        "value"
+                    ]
+                },
+                {
+                    "anyOf": [
+                        {
+                            "required": [
+                                "if_match_id"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "if_match_path"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "if_created_before"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "if_created_after"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "properties": {
+                "key": {
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "if_created_after": {
+                    "$ref": "#/definitions/iso8601_datetime"
+                },
+                "if_created_before": {
+                    "$ref": "#/definitions/iso8601_datetime"
+                },
+                "if_match_id": {
+                    "type": "string"
+                },
+                "if_match_path": {
+                    "$ref": "#/definitions/absolute_path"
+                },
+                "value": {
+                    "type": [
+                        "string",
+                        "boolean",
+                        "number"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "repo_overrides": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "items": {
+                        "$ref": "#/definitions/repo_override"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
         },
         "signing_key": {
             "pattern": "^[A-F0-9]{8}$",
@@ -273,6 +357,12 @@
         },
         "release_stream_mappings": {
             "$ref": "#/definitions/release_stream_mapping"
+        },
+        "releasever_alias": {
+            "$ref": "#/definitions/path_alias_list"
+        },
+        "repo_overrides": {
+            "$ref": "#/definitions/repo_overrides"
         },
         "rhel_open_dist": {
             "$ref": "#/definitions/major_version_list"

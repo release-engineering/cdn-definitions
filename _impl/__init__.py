@@ -147,7 +147,7 @@ def load_schema():
 DATA = load_data()
 
 
-class PathAlias(object):
+class PathAlias:  # pylint: disable=too-few-public-methods
     """Represents an alias between one CDN path and another, generally
     used to make two directory trees on CDN serve identical content."""
 
@@ -169,7 +169,7 @@ class PathAlias(object):
 
         # Equal src/dest is nonsensical
         if self.src == self.dest:
-            raise ValueError("%s cannot alias itself!" % self.src)
+            raise ValueError(f"{self.src} cannot alias itself!")
 
 
 def rhui_aliases():
