@@ -45,6 +45,10 @@ definitions:
     type: string
     pattern: "^[0-9]+$"
 
+  content_set_label:
+    type: string
+    pattern: "^[A-Za-z0-9_\\-]{1,200}$"
+
   product_id_list:
     type: array
     items:
@@ -81,6 +85,15 @@ definitions:
     type: object
     propertyNames:
       $ref: "#/definitions/major_version_string"
+    patternProperties:
+      ".*":
+        $ref: "#/definitions/release_version"
+    additionalProperties: false
+
+  content_set_to_release_version_mapping:
+    type: object
+    propertyNames:
+      $ref: "#/definitions/content_set_label"
     patternProperties:
       ".*":
         $ref: "#/definitions/release_version"
@@ -290,6 +303,9 @@ properties:
 
   override_initial_rhel_release:
     $ref: "#/definitions/major_to_release_version_mapping"
+
+  override_final_rhel_release:
+    $ref: "#/definitions/content_set_to_release_version_mapping"
 
   filter_arches_from_release:
     $ref: "#/definitions/version_to_arch_list_mapping"
