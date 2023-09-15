@@ -203,6 +203,10 @@
 <span class="n">override_initial_rhel_release</span><span class="p">:</span>
   <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
 
+<span class="c1"># Workaround used to override the final RHEL version for given content set</span>
+<span class="n">override_final_rhel_release</span><span class="p">:</span>
+  <span class="s2">&quot;cs_label_example&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
+
 <span class="c1"># Maps an architecture to RHEL versions that do not include said architecture.</span>
 <span class="n">filter_arches_from_release</span><span class="p">:</span>
   <span class="s2">&quot;0&quot;</span><span class="p">:</span>
@@ -348,6 +352,10 @@ definitions:
     type: string
     pattern: &quot;^[0-9]+$&quot;
 
+  content_set_label:
+    type: string
+    pattern: &quot;^[A-Za-z0-9_\\-]{1,200}$&quot;
+
   product_id_list:
     type: array
     items:
@@ -384,6 +392,15 @@ definitions:
     type: object
     propertyNames:
       $ref: &quot;#/definitions/major_version_string&quot;
+    patternProperties:
+      &quot;.*&quot;:
+        $ref: &quot;#/definitions/release_version&quot;
+    additionalProperties: false
+
+  content_set_to_release_version_mapping:
+    type: object
+    propertyNames:
+      $ref: &quot;#/definitions/content_set_label&quot;
     patternProperties:
       &quot;.*&quot;:
         $ref: &quot;#/definitions/release_version&quot;
@@ -593,6 +610,9 @@ properties:
 
   override_initial_rhel_release:
     $ref: &quot;#/definitions/major_to_release_version_mapping&quot;
+
+  override_final_rhel_release:
+    $ref: &quot;#/definitions/content_set_to_release_version_mapping&quot;
 
   filter_arches_from_release:
     $ref: &quot;#/definitions/version_to_arch_list_mapping&quot;
