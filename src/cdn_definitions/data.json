@@ -43,6 +43,9 @@
             "src": "/origin/rpm"
         }
     ],
+    "override_final_rhel_release": {
+        "cs_label_example": "0.0"
+    },
     "override_initial_rhel_release": {
         "0": "0.0"
     },
@@ -77,26 +80,26 @@
     "repo_overrides": {
         "prod": [
             {
-                "key": "example",
                 "if_match_path": "/content/dist/rhel9/",
+                "key": "example",
                 "value": true
             },
             {
-                "key": "example",
                 "if_created_after": "2023-06-01T14:00:00Z",
                 "if_match_id": "rhel-8",
+                "key": "example",
                 "value": true
             }
         ],
         "stage": [
             {
-                "key": "example",
                 "if_match_id": ".",
+                "key": "example",
                 "value": true
             },
             {
-                "key": "example",
                 "if_match_id": "e2e.*rhel-8",
+                "key": "example",
                 "value": false
             }
         ]

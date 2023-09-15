@@ -161,6 +161,10 @@ tps_variant_mappings:
 override_initial_rhel_release:
   "0": "0.0"
 
+# Workaround used to override the final RHEL version for given content set
+override_final_rhel_release:
+  "cs_label_example": "0.0"
+
 # Maps an architecture to RHEL versions that do not include said architecture.
 filter_arches_from_release:
   "0":

@@ -44,6 +44,22 @@
             },
             "type": "object"
         },
+        "content_set_label": {
+            "pattern": "^[A-Za-z0-9_\\-]{1,200}$",
+            "type": "string"
+        },
+        "content_set_to_release_version_mapping": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "$ref": "#/definitions/release_version"
+                }
+            },
+            "propertyNames": {
+                "$ref": "#/definitions/content_set_label"
+            },
+            "type": "object"
+        },
         "current_latest_rhel_versions": {
             "additionalProperties": false,
             "patternProperties": {
@@ -221,10 +237,6 @@
                 }
             ],
             "properties": {
-                "key": {
-                    "minLength": 1,
-                    "type": "string"
-                },
                 "if_created_after": {
                     "$ref": "#/definitions/iso8601_datetime"
                 },
@@ -236,6 +248,10 @@
                 },
                 "if_match_path": {
                     "$ref": "#/definitions/absolute_path"
+                },
+                "key": {
+                    "minLength": 1,
+                    "type": "string"
                 },
                 "value": {
                     "type": [
@@ -348,6 +364,9 @@
         },
         "origin_alias": {
             "$ref": "#/definitions/path_alias_list"
+        },
+        "override_final_rhel_release": {
+            "$ref": "#/definitions/content_set_to_release_version_mapping"
         },
         "override_initial_rhel_release": {
             "$ref": "#/definitions/major_to_release_version_mapping"
