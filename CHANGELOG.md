@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [3.1.0] - 2023-09-15
+
+### Added
+
+- `override_final_rhel_release` - Used to override final RHEL version for repositories of given
+content set.
+
 ## [3.0.0] - 2023-08-30
 
 ### Added
@@ -101,7 +108,8 @@ CDN repos and feature flags which should be enabled on those repos.
 
 - Initial release
 
-[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/release-engineering/cdn-definitions/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.3.0...v3.0.0
 [2.3.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/release-engineering/cdn-definitions/compare/v2.1.0...v2.2.0

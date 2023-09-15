@@ -21,7 +21,7 @@ def get_requirements():
 
 setup(
     name="cdn-definitions",
-    version="3.0.0",
+    version="3.1.0",
     author="Rohan McGovern",
     author_email="rmcgover@redhat.com",
     packages=find_packages("src"),
