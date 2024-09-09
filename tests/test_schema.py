@@ -8,6 +8,7 @@ from . import ROOT_PATH
 
 DATA_PATH = ROOT_PATH / "src/cdn_definitions/data.yaml"
 SCHEMA_PATH = ROOT_PATH / "src/cdn_definitions/schema.yaml"
+HISTORICAL_DATA_DIR = ROOT_PATH / "tests/historical-data"
 
 
 def validate(instance):
@@ -22,10 +23,25 @@ def fixture_data():
         return yaml.safe_load(f)
 
 
+def historical_data():
+    for f in HISTORICAL_DATA_DIR.iterdir():
+        with f.open(encoding="utf-8") as d:
+            yield f.name, yaml.safe_load(d)
+
+
 def test_data_matches_schema(data):
     """Verify that the content of data.yaml matches the declared schema."""
 
     validate(data)
+
+
+@pytest.mark.parametrize("name, historical_data", historical_data())
+def test_historical_data_matches_schema(name, historical_data):
+    """Verify that all the historical data.yaml files that were compatible preceding
+    the schema changes matches the currently declared schema i.e. current schema is
+    backward compatible."""
+
+    validate(historical_data)
 
 
 def test_bogus_data_not_match_schema():
