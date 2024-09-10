@@ -1,0 +1,200 @@
+---
+# Version of this data structure's format.
+# Version string is maintained in accordance with SemVer.
+version: "1.2.0"
+
+# Aliases between paths used for consuming content under RHUI entitlements.
+#
+# Each item defines a "src" (a path accessible under RHUI entitlements)
+# and a "dest" (a path where identical content is accessible under non-RHUI entitlements).
+# For example, /content/dist/rhel/rhui/X should be an alias for /content/dist/rhel/X.
+#
+# For some of these aliases, certain content is filtered under the /rhui/ paths
+# (mainly architectures). This is currently not expressed in the dataset here.
+rhui_alias:
+- src: /content/aus/rhel8/rhui
+  dest: /content/aus/rhel8
+
+- src: /content/aus/rhel/rhui
+  dest: /content/aus/rhel
+
+- src: /content/beta/rhel8/rhui
+  dest: /content/beta/rhel8
+
+- src: /content/beta/rhel-alt/rhui
+  dest: /content/beta/rhel-alt
+
+- src: /content/beta/rhel/rhui
+  dest: /content/beta/rhel
+
+- src: /content/beta/rhs/rhui
+  dest: /content/beta/rhs
+
+- src: /content/dist/layered/rhui
+  dest: /content/dist/layered
+
+- src: /content/dist/middleware/rhui
+  dest: /content/dist/middleware
+
+- src: /content/dist/rhel8/rhui
+  dest: /content/dist/rhel8
+
+- src: /content/dist/rhel-alt/rhui
+  dest: /content/dist/rhel-alt
+
+- src: /content/dist/rhel/rhui
+  dest: /content/dist/rhel
+
+- src: /content/dist/rhes/rhui
+  dest: /content/dist/rhes
+
+- src: /content/dist/rhs/rhui
+  dest: /content/dist/rhs
+
+- src: /content/e4s/rhel8/rhui
+  dest: /content/e4s/rhel8
+
+- src: /content/e4s/rhel/rhui
+  dest: /content/e4s/rhel
+
+- src: /content/els/rhel/rhui
+  dest: /content/els/rhel
+
+- src: /content/eus/rhel8/rhui
+  dest: /content/eus/rhel8
+
+- src: /content/eus/rhel/rhui
+  dest: /content/eus/rhel
+
+- src: /content/rc/rhel/rhui
+  dest: /content/rc/rhel
+
+
+# Aliases between paths relating to the origin area of CDN.
+origin_alias:
+
+# Top-level of origin is accessible also under "content".
+#
+# Original rationale: relative symlinks from Packages to origin were shared between rhui
+# and non-rhui repos, but paths for rhui repos are one level deeper than non-rhui repos.
+#
+# That means a relative link starting with a sequence of "../../.." reaching up to
+# /origin for a non-rhui repo would only reach up to /content/origin for a rhui repo;
+# hence for the same link to work in both cases, this alias must exist.
+- src: /content/origin
+  dest: /origin
+
+# "rpm" and "rpms" mean the same thing under origin.
+#
+# This was originally introduced due to a bug in publishing tools, where some code
+# was designed for "rpms" while other code was designed for "rpm". Rather than fixing
+# it properly, it was worked around by a symlink, and the workaround is now effectively
+# permanent.
+- src: /origin/rpm
+  dest: /origin/rpms
+
+
+# Content set prefixes which should be using symlinks at the $releasever level
+# according to normal business logic, but for historical reasons are exempt
+# and instead do not use symlinks.
+symlink_exceptions:
+ - "/this/is/an/example/"
+
+release_stream_mappings:
+  aus:
+  - "0.0"
+  eus:
+  - "0.0"
+  tus:
+  - "0.0"
+  e4s:
+  - "0.0"
+  other:
+  - "0.0"
+
+# Maps an environment to its current and latest dist and beta RHEL releasevers.
+env_to_releasever_mappings:
+  qa:
+    current_rhel0_beta: "0.0"
+    current_rhel0_dist: "0.0"
+    latest_rhel0_beta: "0.0"
+    latest_rhel0_dist: "0.0"
+  stage:
+    current_rhel0_beta: "0.0"
+    current_rhel0_dist: "0.0"
+    latest_rhel0_beta: "0.0"
+    latest_rhel0_dist: null
+  prod:
+    current_rhel0_beta: "0.0"
+    current_rhel0_dist: "0.0"
+    latest_rhel0_beta: "0.0"
+    latest_rhel0_dist: "0.0"
+
+# Workaround used to override cf-me's platform_full_version.
+cfme_version_mappings:
+  "0.0": "0.0"
+
+# Maps a RHEL variant substring to an expected TPS string.
+tps_variant_mappings:
+  "example-arch": "Example-Variant"
+
+# Workaround used to override the initial RHEL version
+override_initial_rhel_release:
+  "0": "0.0"
+
+# Maps an architecture to RHEL versions that do not include said architecture.
+filter_arches_from_release:
+  "0":
+  - example_64
+
+# Add your product ID here if your layered product's content sets identify a
+# "layered_product_version", but you do not  wish to set the "product_version" field in your
+# repo's repo notes to your product's layered_product_version.
+# Does not apply to cert, openstack, openstack-director, openstack-optools, ose-3.0, or rhs.
+ignore_lp_version_product_ids:
+- "000"
+
+# The RHUI product ID. Used to identify RHUI repos that do not contain the 'rhui' substring.
+rhui_product_id: "000"
+
+# Maps a major RHEL version (platform_major_version), a layered product, or a platform to a list
+# of acceptable GA signing keys (ga_keys) and (optional) beta signing keys (beta_keys). The
+# default mapping is used to define default signing keys.
+signing_keys_mappings:
+  platform:
+    example_platform:
+      ga_keys:
+      - "FFFFFFFF"
+      beta_keys:
+      - "BBBBBBBB"
+    example_none:
+      ga_keys: []
+  layered_product:
+    example-lp:
+      ga_keys:
+      - "00000000"
+  major_version:
+    "0":
+      ga_keys:
+      - "00000000"
+      beta_keys:
+      - "BBBBBBBB"
+  default:
+    ga_keys:
+    - "00000000"
+    beta_keys:
+    - "BBBBBBBB"
+
+
+# A list of RHEL releasevers (minor versions) that should be excluded from listing files
+exclude_from_listings:
+- "0.0"
+
+# Major RHEL versions which are still expecting new minor releases in
+# future. Versions not listed here are exempt from various tooling.
+rhel_open_dist:
+- 0
+
+# If set to False, ubi_population repo note will be set False for all ubi DOT repos and
+# no ubi DOT repo will be populated.
+populate_ubi_dot_repos: True
