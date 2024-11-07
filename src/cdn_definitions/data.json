@@ -2,6 +2,56 @@
     "cfme_version_mappings": {
         "0.0": "0.0"
     },
+    "directory_layouts": [
+        {
+            "layered_product_version": "5.8",
+            "major_version": "6",
+            "name": "ChannelDumpsLayout",
+            "pattern": "(?x)^\n/\n(?:content|shadow)/\n(?P<type>aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/\n(?P<platform>rhel)/\n(?P<rhui>rhui/)?\n(?P<variant>[^/]+)/\n(?P<major_version>[0-9][^/]*)/\n(?:[567](?:Client|ComputeNode|Server|Workstation|Everything))/\n(?P<arch>[^/]+)/\n(?:channel\\-dumps/.+)"
+        },
+        {
+            "name": "DirectoryLayoutC",
+            "pattern": "(?x)^\n/\n(?:content|shadow)/\n(?P<type>aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/\n(?P<platform>rhes|rhs|cf-me)/\n(?P<rhui>rhui/)?\n(?P<variant>[^/]+)/\n(?P<major_version>[0-9])\\.(?P<minor_version>[0-9]+)/\n(?P<arch>[^/]+)/"
+        },
+        {
+            "name": "DirectoryLayoutD",
+            "pattern": "(?x)^\n(?P<up_to_minor>\n  /\n  (?:content|shadow)/\n  (?P<type>aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|tus|e4s)/\n  (?P<platform>cf-me|rhel|rhevh|rhes|rhs)/\n  (?P<rhui>rhui/)?(?P<variant>[^/]+)/\n  (?P<major_version>[0-7][^/]*)\n)\n/\n(?P<minor_version>(?:\\$releasever|\\$[0-9]+|[34][AEW]S|[34]Desktop))/\n(?P<arch>[^/]+)/"
+        },
+        {
+            "name": "DirectoryLayoutE",
+            "pattern": "(?x)^\n/\n(?:content|shadow)/\n(?P<type>aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|rc|preview|tus|e4s)/\n(?P<platform>arm|cf-me|rhel|rhevh|rhes|rhs)/\n(?P<rhui>rhui/)?\n(?P<variant>[^/]+)/\n(?P<major_version>[0-9][^./]*)/\n(?P<arch>(?:arm|aarch64|ppc64|s390x|x86_64|multiarch|\\$basearch))/"
+        },
+        {
+            "name": "DirectoryLayoutF",
+            "pattern": "(?x)^\n/\n(?:content|shadow)/\n(?P<type>aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|preview|tus|e4s)/\n(?P<platform>cf-me|rhel|rhevh|rhes|rhs)/\n(?P<rhui>rhui/)?\n(?P<variant>[^/]+)/\n(?P<major_version>[0-9][^/]*)/\n(?:[567](?:Client|ComputeNode|Server|Workstation|Everything))/\n(?P<arch>(?:ppc64|s390x|x86_64|multiarch|\\$basearch))/\n(?!channel-dumps/)"
+        },
+        {
+            "name": "RhelAltLayout",
+            "pattern": "(?x)^\n/\n(?:content|shadow)/\n(?P<type>aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/\n(?P<platform>rhel-alt)/\n(?P<rhui>rhui/)?\n(?P<variant>[^/]+)/\n(?P<major_version>[0-9])/\n(\n  (\\$releasever)|7(Server|Client|ComputeNode|Workstation)|[0-9]\\.\n  (?P<minor_version>[0-9]+)\n)\n/\n(?P<vendor_arch>[^/]+)/\n(?P<arch>[^/]+)/",
+            "platform": "rhel",
+            "rhelalt": true
+        },
+        {
+            "arch": "x86_64",
+            "major_version": "6",
+            "name": "ContentISOsLayout",
+            "pattern": "(?x)^\n/\ncontent/\ncontentisos(?:/)?",
+            "platform": "rhel",
+            "type": "dist"
+        },
+        {
+            "arch": "x86_64",
+            "name": "SLESLayout",
+            "pattern": "(?x)^\n/\ncontent/\n(?P<type>dist|beta)/\nsuse/server/\n(?P<major_version>11|12|15)/\n(?P<minor_version>sp[\\d])/?",
+            "platform": "suse"
+        },
+        {
+            "name": "PublicRepoFileLayout",
+            "pattern": "(?x)^\n/\ncontent/\npublic/\nrepofiles$",
+            "repo": "files",
+            "type": "dist"
+        }
+    ],
     "env_to_releasever_mappings": {
         "prod": {
             "current_rhel0_beta": "0.0",

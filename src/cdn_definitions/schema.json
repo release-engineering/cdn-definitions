@@ -80,6 +80,65 @@
             },
             "type": "object"
         },
+        "directory_layout": {
+            "additionalProperties": false,
+            "properties": {
+                "arch": {
+                    "$ref": "#/definitions/arch"
+                },
+                "layered_product": {
+                    "type": "string"
+                },
+                "layered_product_version": {
+                    "type": "string"
+                },
+                "major_version": {
+                    "$ref": "#/definitions/major_version_string"
+                },
+                "minor_version": {
+                    "$ref": "#/definitions/major_version_string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "pattern": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "repo": {
+                    "type": "string"
+                },
+                "rhelalt": {
+                    "type": "boolean"
+                },
+                "rhui": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "variant": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "pattern"
+            ],
+            "type": "object"
+        },
+        "directory_layouts": {
+            "items": {
+                "$ref": "#/definitions/directory_layout"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
         "env_to_releasever_mapping": {
             "additionalProperties": false,
             "patternProperties": {
@@ -349,6 +408,9 @@
     "properties": {
         "cfme_version_mappings": {
             "$ref": "#/definitions/cfme_version_mappings_list"
+        },
+        "directory_layouts": {
+            "$ref": "#/definitions/directory_layouts"
         },
         "env_to_releasever_mappings": {
             "$ref": "#/definitions/env_to_releasever_mapping"
