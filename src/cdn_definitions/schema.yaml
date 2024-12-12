@@ -270,6 +270,48 @@ definitions:
           $ref: "#/definitions/repo_override"
     additionalProperties: false
 
+  directory_layout:
+    type: object
+    properties:
+      name: 
+        type: string
+      pattern:
+        type: string
+      type:
+        type: string
+      variant:
+        type: string
+      arch:
+        $ref: "#/definitions/arch"
+      platform:
+        type: string
+      major_version:
+        $ref: "#/definitions/major_version_string"
+      minor_version:
+        $ref: "#/definitions/major_version_string"
+      rhui:
+        type: boolean
+      rhelalt:
+        type: boolean
+      product:
+        type: string
+      layered_product:
+        type: string
+      layered_product_version:
+        type: string
+      repo:
+        type: string
+    required:
+      - name
+      - pattern
+    additionalProperties: false
+
+  directory_layouts:
+    type: array
+    items:
+      $ref: "#/definitions/directory_layout"
+    uniqueItems: true
+
 type: object
 properties:
 
@@ -330,5 +372,8 @@ properties:
 
   repo_overrides:
     $ref: "#/definitions/repo_overrides"
+
+  directory_layouts:
+    $ref: "#/definitions/directory_layouts"
 
 additionalProperties: false

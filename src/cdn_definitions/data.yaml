@@ -251,3 +251,132 @@ repo_overrides:
       if_created_after: "2023-06-01T14:00:00Z"
       key: example
       value: true
+
+# directory_layouts is used to define DirectoryLayout objects and consist of,
+# at least, a name and a pattern to match against content URL. Attributes for
+# the DirectoryLayout object can be overridden here, otherwise an attempt will
+# be made to fill them from the pattern.
+#
+# Allowed value types; string, boolean, null
+directory_layouts:
+  - name: ChannelDumpsLayout
+    # "/content/<type>/<platform>/<variant>/<major>/<minor>/<arch>/channel-dumps/"
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P<type>aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/
+      (?P<platform>rhel)/
+      (?P<rhui>rhui/)?
+      (?P<variant>[^/]+)/
+      (?P<major_version>[0-9][^/]*)/
+      (?:[567](?:Client|ComputeNode|Server|Workstation|Everything))/
+      (?P<arch>[^/]+)/
+      (?:channel\-dumps/.+)
+    major_version: "6"
+    layered_product_version: "5.8"
+  - name: DirectoryLayoutC
+    # "/content/<type>/<platform>/<rhui>/<variant>/<major>.<minor>/<arch>/"
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P<type>aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/
+      (?P<platform>rhes|rhs|cf-me)/
+      (?P<rhui>rhui/)?
+      (?P<variant>[^/]+)/
+      (?P<major_version>[0-9])\.(?P<minor_version>[0-9]+)/
+      (?P<arch>[^/]+)/
+  - name: DirectoryLayoutD
+    # "/content/<type>/<platform>/<rhui>/<variant>/<major>/<minor>/<arch>/"
+    pattern: |-
+      (?x)^
+      (?P<up_to_minor>
+        /
+        (?:content|shadow)/
+        (?P<type>aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|tus|e4s)/
+        (?P<platform>cf-me|rhel|rhevh|rhes|rhs)/
+        (?P<rhui>rhui/)?(?P<variant>[^/]+)/
+        (?P<major_version>[0-7][^/]*)
+      )
+      /
+      (?P<minor_version>(?:\$releasever|\$[0-9]+|[34][AEW]S|[34]Desktop))/
+      (?P<arch>[^/]+)/
+  - name: DirectoryLayoutE
+    # "/content/<type>/<platform>/<rhui>/<variant>/<major>/<arch>/"
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P<type>aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|rc|preview|tus|e4s)/
+      (?P<platform>arm|cf-me|rhel|rhevh|rhes|rhs)/
+      (?P<rhui>rhui/)?
+      (?P<variant>[^/]+)/
+      (?P<major_version>[0-9][^./]*)/
+      (?P<arch>(?:arm|aarch64|ppc64|s390x|x86_64|multiarch|\$basearch))/
+  - name: DirectoryLayoutF
+    # "/content/<type>/<platform>/<rhui>/<variant>/<major>/<minor (no $releasever)>/<arch>/"
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P<type>aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|preview|tus|e4s)/
+      (?P<platform>cf-me|rhel|rhevh|rhes|rhs)/
+      (?P<rhui>rhui/)?
+      (?P<variant>[^/]+)/
+      (?P<major_version>[0-9][^/]*)/
+      (?:[567](?:Client|ComputeNode|Server|Workstation|Everything))/
+      (?P<arch>(?:ppc64|s390x|x86_64|multiarch|\$basearch))/
+      (?!channel-dumps/)
+  - name: RhelAltLayout
+    # "/content/<type>/<platform>/<rhui>/<variant>/<major>/$releasever|<major>.<minor>|7$Variant/<vendor_arch>/<arch>/"
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P<type>aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/
+      (?P<platform>rhel-alt)/
+      (?P<rhui>rhui/)?
+      (?P<variant>[^/]+)/
+      (?P<major_version>[0-9])/
+      (
+        (\$releasever)|7(Server|Client|ComputeNode|Workstation)|[0-9]\.
+        (?P<minor_version>[0-9]+)
+      )
+      /
+      (?P<vendor_arch>[^/]+)/
+      (?P<arch>[^/]+)/
+    platform: rhel
+    rhelalt: true
+  - name: ContentISOsLayout
+    # "/content/contentisos/
+    pattern: |-
+      (?x)^
+      /
+      content/
+      contentisos(?:/)?
+    type: dist
+    platform: rhel
+    major_version: "6"
+    arch: x86_64
+  - name: SLESLayout
+    # "/content/dist/suse/server/[11/12/15]"
+    pattern: |-
+      (?x)^
+      /
+      content/
+      (?P<type>dist|beta)/
+      suse/server/
+      (?P<major_version>11|12|15)/
+      (?P<minor_version>sp[\d])/?
+    arch: "x86_64"
+    platform: "suse"
+  - name: PublicRepoFileLayout
+    pattern: |-
+      (?x)^
+      /
+      content/
+      public/
+      repofiles$
+    type: dist
+    repo: files
