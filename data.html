@@ -40,259 +40,388 @@
 <li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/data.json">https://release-engineering.github.io/cdn-definitions/data.json</a></p></li>
 <li><p><a class="reference external" href="https://release-engineering.github.io/cdn-definitions/data.yaml">https://release-engineering.github.io/cdn-definitions/data.yaml</a></p></li>
 </ul>
-<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
-<span class="c1"># Version of this data structure&#39;s format.</span>
-<span class="c1"># Version string is maintained in accordance with SemVer.</span>
-<span class="n">version</span><span class="p">:</span> <span class="s2">&quot;1.3.0&quot;</span>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>---
+# Version of this data structure&#39;s format.
+# Version string is maintained in accordance with SemVer.
+version: &quot;1.3.0&quot;
 
-<span class="c1"># Aliases between paths used for consuming content under RHUI entitlements.</span>
-<span class="c1">#</span>
-<span class="c1"># Each item defines a &quot;src&quot; (a path accessible under RHUI entitlements)</span>
-<span class="c1"># and a &quot;dest&quot; (a path where identical content is accessible under non-RHUI entitlements).</span>
-<span class="c1"># For example, /content/dist/rhel/rhui/X should be an alias for /content/dist/rhel/X.</span>
-<span class="c1">#</span>
-<span class="c1"># For some of these aliases, certain content is filtered under the /rhui/ paths</span>
-<span class="c1"># (mainly architectures). This is currently not expressed in the dataset here.</span>
-<span class="n">rhui_alias</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">aus</span><span class="o">/</span><span class="n">rhel8</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">aus</span><span class="o">/</span><span class="n">rhel8</span>
+# Aliases between paths used for consuming content under RHUI entitlements.
+#
+# Each item defines a &quot;src&quot; (a path accessible under RHUI entitlements)
+# and a &quot;dest&quot; (a path where identical content is accessible under non-RHUI entitlements).
+# For example, /content/dist/rhel/rhui/X should be an alias for /content/dist/rhel/X.
+#
+# For some of these aliases, certain content is filtered under the /rhui/ paths
+# (mainly architectures). This is currently not expressed in the dataset here.
+rhui_alias:
+- src: /content/aus/rhel8/rhui
+  dest: /content/aus/rhel8
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">aus</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">aus</span><span class="o">/</span><span class="n">rhel</span>
+- src: /content/aus/rhel/rhui
+  dest: /content/aus/rhel
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel8</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel8</span>
+- src: /content/beta/rhel8/rhui
+  dest: /content/beta/rhel8
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span>
+- src: /content/beta/rhel-alt/rhui
+  dest: /content/beta/rhel-alt
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhel</span>
+- src: /content/beta/rhel/rhui
+  dest: /content/beta/rhel
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhs</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">beta</span><span class="o">/</span><span class="n">rhs</span>
+- src: /content/beta/rhs/rhui
+  dest: /content/beta/rhs
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">layered</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">layered</span>
+- src: /content/dist/layered/rhui
+  dest: /content/dist/layered
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">middleware</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">middleware</span>
+- src: /content/dist/middleware/rhui
+  dest: /content/dist/middleware
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel8</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel8</span>
+- src: /content/dist/rhel8/rhui
+  dest: /content/dist/rhel8
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span><span class="o">-</span><span class="n">alt</span>
+- src: /content/dist/rhel-alt/rhui
+  dest: /content/dist/rhel-alt
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel</span>
+- src: /content/dist/rhel/rhui
+  dest: /content/dist/rhel
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhes</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhes</span>
+- src: /content/dist/rhes/rhui
+  dest: /content/dist/rhes
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhs</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhs</span>
+- src: /content/dist/rhs/rhui
+  dest: /content/dist/rhs
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">e4s</span><span class="o">/</span><span class="n">rhel8</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">e4s</span><span class="o">/</span><span class="n">rhel8</span>
+- src: /content/e4s/rhel8/rhui
+  dest: /content/e4s/rhel8
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">e4s</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">e4s</span><span class="o">/</span><span class="n">rhel</span>
+- src: /content/e4s/rhel/rhui
+  dest: /content/e4s/rhel
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">els</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">els</span><span class="o">/</span><span class="n">rhel</span>
+- src: /content/els/rhel/rhui
+  dest: /content/els/rhel
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">eus</span><span class="o">/</span><span class="n">rhel8</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">eus</span><span class="o">/</span><span class="n">rhel8</span>
+- src: /content/eus/rhel8/rhui
+  dest: /content/eus/rhel8
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">eus</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">eus</span><span class="o">/</span><span class="n">rhel</span>
+- src: /content/eus/rhel/rhui
+  dest: /content/eus/rhel
 
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">rc</span><span class="o">/</span><span class="n">rhel</span><span class="o">/</span><span class="n">rhui</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">rc</span><span class="o">/</span><span class="n">rhel</span>
-
-
-<span class="c1"># Aliases between paths relating to the origin area of CDN.</span>
-<span class="n">origin_alias</span><span class="p">:</span>
-
-<span class="c1"># Top-level of origin is accessible also under &quot;content&quot;.</span>
-<span class="c1">#</span>
-<span class="c1"># Original rationale: relative symlinks from Packages to origin were shared between rhui</span>
-<span class="c1"># and non-rhui repos, but paths for rhui repos are one level deeper than non-rhui repos.</span>
-<span class="c1">#</span>
-<span class="c1"># That means a relative link starting with a sequence of &quot;../../..&quot; reaching up to</span>
-<span class="c1"># /origin for a non-rhui repo would only reach up to /content/origin for a rhui repo;</span>
-<span class="c1"># hence for the same link to work in both cases, this alias must exist.</span>
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">origin</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span>
-
-<span class="c1"># &quot;rpm&quot; and &quot;rpms&quot; mean the same thing under origin.</span>
-<span class="c1">#</span>
-<span class="c1"># This was originally introduced due to a bug in publishing tools, where some code</span>
-<span class="c1"># was designed for &quot;rpms&quot; while other code was designed for &quot;rpm&quot;. Rather than fixing</span>
-<span class="c1"># it properly, it was worked around by a symlink, and the workaround is now effectively</span>
-<span class="c1"># permanent.</span>
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span><span class="o">/</span><span class="n">rpm</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">origin</span><span class="o">/</span><span class="n">rpms</span>
+- src: /content/rc/rhel/rhui
+  dest: /content/rc/rhel
 
 
-<span class="c1"># Aliases between two RHEL-X repositories, both of which contain the latest RHEL-X release.</span>
-<span class="n">releasever_alias</span><span class="p">:</span>
+# Aliases between paths relating to the origin area of CDN.
+origin_alias:
 
-<span class="c1"># Each item defines a &quot;src&quot; (a floating RHEL-X repository that always contains the latest content</span>
-<span class="c1"># for a major RHEL release) and a &quot;dest&quot; (a RHEL-X.Y repository, containing the published content</span>
-<span class="c1"># for the latest minor release version of RHEL-X).</span>
-<span class="c1">#</span>
-<span class="c1"># For example, /content/dist/rhelX/X should be an alias for /content/dist/rhelX/X.Y, where X is a</span>
-<span class="c1"># major version of RHEL and X.Y is a minor version of RHEL.</span>
-<span class="c1">#</span>
-<span class="c1"># These aliases are intended for use with product versions no longer receiving releases, i.e. those</span>
-<span class="c1"># not covered by rhel_open_dist. For currently active versions, aliases are instead derived from</span>
-<span class="c1"># other fields such as env_to_releasever_mappings.</span>
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel0</span><span class="o">/</span><span class="mi">0</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel0</span><span class="o">/</span><span class="mf">0.9</span>
-<span class="o">-</span> <span class="n">src</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel1</span><span class="o">/</span><span class="mi">1</span>
-  <span class="n">dest</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel1</span><span class="o">/</span><span class="mf">1.11</span>
+# Top-level of origin is accessible also under &quot;content&quot;.
+#
+# Original rationale: relative symlinks from Packages to origin were shared between rhui
+# and non-rhui repos, but paths for rhui repos are one level deeper than non-rhui repos.
+#
+# That means a relative link starting with a sequence of &quot;../../..&quot; reaching up to
+# /origin for a non-rhui repo would only reach up to /content/origin for a rhui repo;
+# hence for the same link to work in both cases, this alias must exist.
+- src: /content/origin
+  dest: /origin
 
-
-<span class="c1"># Content set prefixes which should be using symlinks at the $releasever level</span>
-<span class="c1"># according to normal business logic, but for historical reasons are exempt</span>
-<span class="c1"># and instead do not use symlinks.</span>
-<span class="n">symlink_exceptions</span><span class="p">:</span>
- <span class="o">-</span> <span class="s2">&quot;/this/is/an/example/&quot;</span>
-
-<span class="n">release_stream_mappings</span><span class="p">:</span>
-  <span class="n">aus</span><span class="p">:</span>
-  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
-  <span class="n">eus</span><span class="p">:</span>
-  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
-  <span class="n">tus</span><span class="p">:</span>
-  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
-  <span class="n">e4s</span><span class="p">:</span>
-  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
-  <span class="n">other</span><span class="p">:</span>
-  <span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
-
-<span class="c1"># Maps an environment to its current and latest dist and beta RHEL releasevers.</span>
-<span class="n">env_to_releasever_mappings</span><span class="p">:</span>
-  <span class="n">qa</span><span class="p">:</span>
-    <span class="n">current_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">current_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">latest_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">latest_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-  <span class="n">stage</span><span class="p">:</span>
-    <span class="n">current_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">current_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">latest_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">latest_rhel0_dist</span><span class="p">:</span> <span class="n">null</span>
-  <span class="n">prod</span><span class="p">:</span>
-    <span class="n">current_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">current_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">latest_rhel0_beta</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-    <span class="n">latest_rhel0_dist</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-
-<span class="c1"># Workaround used to override cf-me&#39;s platform_full_version.</span>
-<span class="n">cfme_version_mappings</span><span class="p">:</span>
-  <span class="s2">&quot;0.0&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-
-<span class="c1"># Maps a RHEL variant substring to an expected TPS string.</span>
-<span class="n">tps_variant_mappings</span><span class="p">:</span>
-  <span class="s2">&quot;example-arch&quot;</span><span class="p">:</span> <span class="s2">&quot;Example-Variant&quot;</span>
-
-<span class="c1"># Workaround used to override the initial RHEL version</span>
-<span class="n">override_initial_rhel_release</span><span class="p">:</span>
-  <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-
-<span class="c1"># Workaround used to override the final RHEL version for given content set</span>
-<span class="n">override_final_rhel_release</span><span class="p">:</span>
-  <span class="s2">&quot;cs_label_example&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0&quot;</span>
-
-<span class="c1"># Maps an architecture to RHEL versions that do not include said architecture.</span>
-<span class="n">filter_arches_from_release</span><span class="p">:</span>
-  <span class="s2">&quot;0&quot;</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">example_64</span>
-
-<span class="c1"># Add your product ID here if your layered product&#39;s content sets identify a</span>
-<span class="c1"># &quot;layered_product_version&quot;, but you do not  wish to set the &quot;product_version&quot; field in your</span>
-<span class="c1"># repo&#39;s repo notes to your product&#39;s layered_product_version.</span>
-<span class="c1"># Does not apply to cert, openstack, openstack-director, openstack-optools, ose-3.0, or rhs.</span>
-<span class="n">ignore_lp_version_product_ids</span><span class="p">:</span>
-<span class="o">-</span> <span class="s2">&quot;000&quot;</span>
-
-<span class="c1"># The RHUI product ID. Used to identify RHUI repos that do not contain the &#39;rhui&#39; substring.</span>
-<span class="n">rhui_product_id</span><span class="p">:</span> <span class="s2">&quot;000&quot;</span>
-
-<span class="c1"># Maps a major RHEL version (platform_major_version), a layered product, or a platform to a list</span>
-<span class="c1"># of acceptable GA signing keys (ga_keys) and (optional) beta signing keys (beta_keys). The</span>
-<span class="c1"># default mapping is used to define default signing keys.</span>
-<span class="n">signing_keys_mappings</span><span class="p">:</span>
-  <span class="n">platform</span><span class="p">:</span>
-    <span class="n">example_platform</span><span class="p">:</span>
-      <span class="n">ga_keys</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;FFFFFFFF&quot;</span>
-      <span class="n">beta_keys</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;BBBBBBBB&quot;</span>
-    <span class="n">example_none</span><span class="p">:</span>
-      <span class="n">ga_keys</span><span class="p">:</span> <span class="p">[]</span>
-  <span class="n">layered_product</span><span class="p">:</span>
-    <span class="n">example</span><span class="o">-</span><span class="n">lp</span><span class="p">:</span>
-      <span class="n">ga_keys</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;00000000&quot;</span>
-  <span class="n">major_version</span><span class="p">:</span>
-    <span class="s2">&quot;0&quot;</span><span class="p">:</span>
-      <span class="n">ga_keys</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;00000000&quot;</span>
-      <span class="n">beta_keys</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;BBBBBBBB&quot;</span>
-  <span class="n">default</span><span class="p">:</span>
-    <span class="n">ga_keys</span><span class="p">:</span>
-    <span class="o">-</span> <span class="s2">&quot;00000000&quot;</span>
-    <span class="n">beta_keys</span><span class="p">:</span>
-    <span class="o">-</span> <span class="s2">&quot;BBBBBBBB&quot;</span>
+# &quot;rpm&quot; and &quot;rpms&quot; mean the same thing under origin.
+#
+# This was originally introduced due to a bug in publishing tools, where some code
+# was designed for &quot;rpms&quot; while other code was designed for &quot;rpm&quot;. Rather than fixing
+# it properly, it was worked around by a symlink, and the workaround is now effectively
+# permanent.
+- src: /origin/rpm
+  dest: /origin/rpms
 
 
-<span class="c1"># A list of RHEL releasevers (minor versions) that should be excluded from listing files</span>
-<span class="n">exclude_from_listings</span><span class="p">:</span>
-<span class="o">-</span> <span class="s2">&quot;0.0&quot;</span>
+# Aliases between two RHEL-X repositories, both of which contain the latest RHEL-X release.
+releasever_alias:
 
-<span class="c1"># Major RHEL versions which are still expecting new minor releases in</span>
-<span class="c1"># future. Versions not listed here are exempt from various tooling.</span>
-<span class="n">rhel_open_dist</span><span class="p">:</span>
-<span class="o">-</span> <span class="mi">0</span>
+# Each item defines a &quot;src&quot; (a floating RHEL-X repository that always contains the latest content
+# for a major RHEL release) and a &quot;dest&quot; (a RHEL-X.Y repository, containing the published content
+# for the latest minor release version of RHEL-X).
+#
+# For example, /content/dist/rhelX/X should be an alias for /content/dist/rhelX/X.Y, where X is a
+# major version of RHEL and X.Y is a minor version of RHEL.
+#
+# These aliases are intended for use with product versions no longer receiving releases, i.e. those
+# not covered by rhel_open_dist. For currently active versions, aliases are instead derived from
+# other fields such as env_to_releasever_mappings.
+- src: /content/dist/rhel0/0
+  dest: /content/dist/rhel0/0.9
+- src: /content/dist/rhel1/1
+  dest: /content/dist/rhel1/1.11
 
-<span class="c1"># If set to False, ubi_population repo note will be set False for all ubi DOT repos and</span>
-<span class="c1"># no ubi DOT repo will be populated.</span>
-<span class="n">populate_ubi_dot_repos</span><span class="p">:</span> <span class="kc">True</span>
 
-<span class="c1"># repo_overrides can be used to define mappings between certain criteria matching CDN repos</span>
-<span class="c1"># and configuration which should be set on those repos. The intended usage is to allow</span>
-<span class="c1"># for fine-grained and (usually) temporary deviations from the baseline configuration.</span>
-<span class="c1"># Allowed value types are boolean, string, integer or float.</span>
-<span class="n">repo_overrides</span><span class="p">:</span>
-  <span class="n">stage</span><span class="p">:</span>
-    <span class="c1"># everything is flagged by default</span>
-    <span class="o">-</span> <span class="n">if_match_id</span><span class="p">:</span> <span class="o">.</span>
-      <span class="n">key</span><span class="p">:</span> <span class="n">example</span>
-      <span class="n">value</span><span class="p">:</span> <span class="n">true</span>
+# Content set prefixes which should be using symlinks at the $releasever level
+# according to normal business logic, but for historical reasons are exempt
+# and instead do not use symlinks.
+symlink_exceptions:
+ - &quot;/this/is/an/example/&quot;
 
-    <span class="c1"># but let&#39;s keep at least some e2e repos without the flag so the</span>
-    <span class="c1"># old behavior continues to be tested</span>
-    <span class="o">-</span> <span class="n">if_match_id</span><span class="p">:</span> <span class="n">e2e</span><span class="o">.*</span><span class="n">rhel</span><span class="o">-</span><span class="mi">8</span>
-      <span class="n">key</span><span class="p">:</span> <span class="n">example</span>
-      <span class="n">value</span><span class="p">:</span> <span class="n">false</span>
+release_stream_mappings:
+  aus:
+  - &quot;0.0&quot;
+  eus:
+  - &quot;0.0&quot;
+  tus:
+  - &quot;0.0&quot;
+  e4s:
+  - &quot;0.0&quot;
+  other:
+  - &quot;0.0&quot;
 
-  <span class="n">prod</span><span class="p">:</span>
-    <span class="c1"># rhel9 content identified by subtree should be flagged</span>
-    <span class="o">-</span> <span class="n">if_match_path</span><span class="p">:</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">rhel9</span><span class="o">/</span>
-      <span class="n">key</span><span class="p">:</span> <span class="n">example</span>
-      <span class="n">value</span><span class="p">:</span> <span class="n">true</span>
+# Maps an environment to its current and latest dist and beta RHEL releasevers.
+env_to_releasever_mappings:
+  qa:
+    current_rhel0_beta: &quot;0.0&quot;
+    current_rhel0_dist: &quot;0.0&quot;
+    latest_rhel0_beta: &quot;0.0&quot;
+    latest_rhel0_dist: &quot;0.0&quot;
+  stage:
+    current_rhel0_beta: &quot;0.0&quot;
+    current_rhel0_dist: &quot;0.0&quot;
+    latest_rhel0_beta: &quot;0.0&quot;
+    latest_rhel0_dist: null
+  prod:
+    current_rhel0_beta: &quot;0.0&quot;
+    current_rhel0_dist: &quot;0.0&quot;
+    latest_rhel0_beta: &quot;0.0&quot;
+    latest_rhel0_dist: &quot;0.0&quot;
 
-    <span class="c1"># rhel8 content identified by pulp repo ID created after a certain date</span>
-    <span class="c1"># should be flagged</span>
-    <span class="o">-</span> <span class="n">if_match_id</span><span class="p">:</span> <span class="n">rhel</span><span class="o">-</span><span class="mi">8</span>
-      <span class="n">if_created_after</span><span class="p">:</span> <span class="s2">&quot;2023-06-01T14:00:00Z&quot;</span>
-      <span class="n">key</span><span class="p">:</span> <span class="n">example</span>
-      <span class="n">value</span><span class="p">:</span> <span class="n">true</span>
+# Workaround used to override cf-me&#39;s platform_full_version.
+cfme_version_mappings:
+  &quot;0.0&quot;: &quot;0.0&quot;
+
+# Maps a RHEL variant substring to an expected TPS string.
+tps_variant_mappings:
+  &quot;example-arch&quot;: &quot;Example-Variant&quot;
+
+# Workaround used to override the initial RHEL version
+override_initial_rhel_release:
+  &quot;0&quot;: &quot;0.0&quot;
+
+# Workaround used to override the final RHEL version for given content set
+override_final_rhel_release:
+  &quot;cs_label_example&quot;: &quot;0.0&quot;
+
+# Maps an architecture to RHEL versions that do not include said architecture.
+filter_arches_from_release:
+  &quot;0&quot;:
+  - example_64
+
+# Add your product ID here if your layered product&#39;s content sets identify a
+# &quot;layered_product_version&quot;, but you do not  wish to set the &quot;product_version&quot; field in your
+# repo&#39;s repo notes to your product&#39;s layered_product_version.
+# Does not apply to cert, openstack, openstack-director, openstack-optools, ose-3.0, or rhs.
+ignore_lp_version_product_ids:
+- &quot;000&quot;
+
+# The RHUI product ID. Used to identify RHUI repos that do not contain the &#39;rhui&#39; substring.
+rhui_product_id: &quot;000&quot;
+
+# Maps a major RHEL version (platform_major_version), a layered product, or a platform to a list
+# of acceptable GA signing keys (ga_keys) and (optional) beta signing keys (beta_keys). The
+# default mapping is used to define default signing keys.
+signing_keys_mappings:
+  platform:
+    example_platform:
+      ga_keys:
+      - &quot;FFFFFFFF&quot;
+      beta_keys:
+      - &quot;BBBBBBBB&quot;
+    example_none:
+      ga_keys: []
+  layered_product:
+    example-lp:
+      ga_keys:
+      - &quot;00000000&quot;
+  major_version:
+    &quot;0&quot;:
+      ga_keys:
+      - &quot;00000000&quot;
+      beta_keys:
+      - &quot;BBBBBBBB&quot;
+  default:
+    ga_keys:
+    - &quot;00000000&quot;
+    beta_keys:
+    - &quot;BBBBBBBB&quot;
+
+
+# A list of RHEL releasevers (minor versions) that should be excluded from listing files
+exclude_from_listings:
+- &quot;0.0&quot;
+
+# Major RHEL versions which are still expecting new minor releases in
+# future. Versions not listed here are exempt from various tooling.
+rhel_open_dist:
+- 0
+
+# If set to False, ubi_population repo note will be set False for all ubi DOT repos and
+# no ubi DOT repo will be populated.
+populate_ubi_dot_repos: True
+
+# repo_overrides can be used to define mappings between certain criteria matching CDN repos
+# and configuration which should be set on those repos. The intended usage is to allow
+# for fine-grained and (usually) temporary deviations from the baseline configuration.
+# Allowed value types are boolean, string, integer or float.
+repo_overrides:
+  stage:
+    # everything is flagged by default
+    - if_match_id: .
+      key: example
+      value: true
+
+    # but let&#39;s keep at least some e2e repos without the flag so the
+    # old behavior continues to be tested
+    - if_match_id: e2e.*rhel-8
+      key: example
+      value: false
+
+  prod:
+    # rhel9 content identified by subtree should be flagged
+    - if_match_path: /content/dist/rhel9/
+      key: example
+      value: true
+
+    # rhel8 content identified by pulp repo ID created after a certain date
+    # should be flagged
+    - if_match_id: rhel-8
+      if_created_after: &quot;2023-06-01T14:00:00Z&quot;
+      key: example
+      value: true
+
+# directory_layouts is used to define DirectoryLayout objects and consist of,
+# at least, a name and a pattern to match against content URL. Attributes for
+# the DirectoryLayout object can be overridden here, otherwise an attempt will
+# be made to fill them from the pattern.
+#
+# Allowed value types; string, boolean, null
+directory_layouts:
+  - name: ChannelDumpsLayout
+    # &quot;/content/&lt;type&gt;/&lt;platform&gt;/&lt;variant&gt;/&lt;major&gt;/&lt;minor&gt;/&lt;arch&gt;/channel-dumps/&quot;
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P&lt;type&gt;aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/
+      (?P&lt;platform&gt;rhel)/
+      (?P&lt;rhui&gt;rhui/)?
+      (?P&lt;variant&gt;[^/]+)/
+      (?P&lt;major_version&gt;[0-9][^/]*)/
+      (?:[567](?:Client|ComputeNode|Server|Workstation|Everything))/
+      (?P&lt;arch&gt;[^/]+)/
+      (?:channel\-dumps/.+)
+    major_version: &quot;6&quot;
+    layered_product_version: &quot;5.8&quot;
+  - name: DirectoryLayoutC
+    # &quot;/content/&lt;type&gt;/&lt;platform&gt;/&lt;rhui&gt;/&lt;variant&gt;/&lt;major&gt;.&lt;minor&gt;/&lt;arch&gt;/&quot;
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P&lt;type&gt;aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/
+      (?P&lt;platform&gt;rhes|rhs|cf-me)/
+      (?P&lt;rhui&gt;rhui/)?
+      (?P&lt;variant&gt;[^/]+)/
+      (?P&lt;major_version&gt;[0-9])\.(?P&lt;minor_version&gt;[0-9]+)/
+      (?P&lt;arch&gt;[^/]+)/
+  - name: DirectoryLayoutD
+    # &quot;/content/&lt;type&gt;/&lt;platform&gt;/&lt;rhui&gt;/&lt;variant&gt;/&lt;major&gt;/&lt;minor&gt;/&lt;arch&gt;/&quot;
+    pattern: |-
+      (?x)^
+      (?P&lt;up_to_minor&gt;
+        /
+        (?:content|shadow)/
+        (?P&lt;type&gt;aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|tus|e4s)/
+        (?P&lt;platform&gt;cf-me|rhel|rhevh|rhes|rhs)/
+        (?P&lt;rhui&gt;rhui/)?(?P&lt;variant&gt;[^/]+)/
+        (?P&lt;major_version&gt;[0-7][^/]*)
+      )
+      /
+      (?P&lt;minor_version&gt;(?:\$releasever|\$[0-9]+|[34][AEW]S|[34]Desktop))/
+      (?P&lt;arch&gt;[^/]+)/
+  - name: DirectoryLayoutE
+    # &quot;/content/&lt;type&gt;/&lt;platform&gt;/&lt;rhui&gt;/&lt;variant&gt;/&lt;major&gt;/&lt;arch&gt;/&quot;
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P&lt;type&gt;aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|rc|preview|tus|e4s)/
+      (?P&lt;platform&gt;arm|cf-me|rhel|rhevh|rhes|rhs)/
+      (?P&lt;rhui&gt;rhui/)?
+      (?P&lt;variant&gt;[^/]+)/
+      (?P&lt;major_version&gt;[0-9][^./]*)/
+      (?P&lt;arch&gt;(?:arm|aarch64|ppc64|s390x|x86_64|multiarch|\$basearch))/
+  - name: DirectoryLayoutF
+    # &quot;/content/&lt;type&gt;/&lt;platform&gt;/&lt;rhui&gt;/&lt;variant&gt;/&lt;major&gt;/&lt;minor (no $releasever)&gt;/&lt;arch&gt;/&quot;
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P&lt;type&gt;aus|dist|beta|(?:retired-)?els|eus|fastrack|htb|rhb|preview|tus|e4s)/
+      (?P&lt;platform&gt;cf-me|rhel|rhevh|rhes|rhs)/
+      (?P&lt;rhui&gt;rhui/)?
+      (?P&lt;variant&gt;[^/]+)/
+      (?P&lt;major_version&gt;[0-9][^/]*)/
+      (?:[567](?:Client|ComputeNode|Server|Workstation|Everything))/
+      (?P&lt;arch&gt;(?:ppc64|s390x|x86_64|multiarch|\$basearch))/
+      (?!channel-dumps/)
+  - name: RhelAltLayout
+    # &quot;/content/&lt;type&gt;/&lt;platform&gt;/&lt;rhui&gt;/&lt;variant&gt;/&lt;major&gt;/$releasever|&lt;major&gt;.&lt;minor&gt;|7$Variant/&lt;vendor_arch&gt;/&lt;arch&gt;/&quot;
+    pattern: |-
+      (?x)^
+      /
+      (?:content|shadow)/
+      (?P&lt;type&gt;aus|dist|beta|(?:retired-)?els|eus|htb|rhb|tus|e4s)/
+      (?P&lt;platform&gt;rhel-alt)/
+      (?P&lt;rhui&gt;rhui/)?
+      (?P&lt;variant&gt;[^/]+)/
+      (?P&lt;major_version&gt;[0-9])/
+      (
+        (\$releasever)|7(Server|Client|ComputeNode|Workstation)|[0-9]\.
+        (?P&lt;minor_version&gt;[0-9]+)
+      )
+      /
+      (?P&lt;vendor_arch&gt;[^/]+)/
+      (?P&lt;arch&gt;[^/]+)/
+    platform: rhel
+    rhelalt: true
+  - name: ContentISOsLayout
+    # &quot;/content/contentisos/
+    pattern: |-
+      (?x)^
+      /
+      content/
+      contentisos(?:/)?
+    type: dist
+    platform: rhel
+    major_version: &quot;6&quot;
+    arch: x86_64
+  - name: SLESLayout
+    # &quot;/content/dist/suse/server/[11/12/15]&quot;
+    pattern: |-
+      (?x)^
+      /
+      content/
+      (?P&lt;type&gt;dist|beta)/
+      suse/server/
+      (?P&lt;major_version&gt;11|12|15)/
+      (?P&lt;minor_version&gt;sp[\d])/?
+    arch: &quot;x86_64&quot;
+    platform: &quot;suse&quot;
+  - name: PublicRepoFileLayout
+    pattern: |-
+      (?x)^
+      /
+      content/
+      public/
+      repofiles$
+    type: dist
+    repo: files
 </pre></div>
 </div>
 </section>
@@ -577,6 +706,48 @@ definitions:
           $ref: &quot;#/definitions/repo_override&quot;
     additionalProperties: false
 
+  directory_layout:
+    type: object
+    properties:
+      name:
+        type: string
+      pattern:
+        type: string
+      type:
+        type: string
+      variant:
+        type: string
+      arch:
+        $ref: &quot;#/definitions/arch&quot;
+      platform:
+        type: string
+      major_version:
+        $ref: &quot;#/definitions/major_version_string&quot;
+      minor_version:
+        $ref: &quot;#/definitions/major_version_string&quot;
+      rhui:
+        type: boolean
+      rhelalt:
+        type: boolean
+      product:
+        type: string
+      layered_product:
+        type: string
+      layered_product_version:
+        type: string
+      repo:
+        type: string
+    required:
+      - name
+      - pattern
+    additionalProperties: false
+
+  directory_layouts:
+    type: array
+    items:
+      $ref: &quot;#/definitions/directory_layout&quot;
+    uniqueItems: true
+
 type: object
 properties:
 
@@ -637,6 +808,9 @@ properties:
 
   repo_overrides:
     $ref: &quot;#/definitions/repo_overrides&quot;
+
+  directory_layouts:
+    $ref: &quot;#/definitions/directory_layouts&quot;
 
 additionalProperties: false
 </pre></div>
