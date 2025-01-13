@@ -361,6 +361,9 @@ properties:
   rhui_product_id:
     $ref: "#/definitions/product_id"
 
+  rhui_product_ids:
+    $ref: "#/definitions/product_id_list"
+
   ignore_lp_version_product_ids:
     $ref: "#/definitions/product_id_list"
 
