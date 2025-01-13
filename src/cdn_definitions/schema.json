@@ -454,6 +454,9 @@
         "rhui_product_id": {
             "$ref": "#/definitions/product_id"
         },
+        "rhui_product_ids": {
+            "$ref": "#/definitions/product_id_list"
+        },
         "signing_keys_mappings": {
             "$ref": "#/definitions/signing_keys_mapping"
         },
