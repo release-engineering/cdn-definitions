@@ -235,7 +235,10 @@
             "src": "/content/rc/rhel/rhui"
         }
     ],
-    "rhui_product_id": "000",
+    "rhui_product_ids": [
+        "000",
+        "001"
+    ],
     "signing_keys_mappings": {
         "default": {
             "beta_keys": [

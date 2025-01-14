@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Data &#8212; cdn-definitions  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6625fa76" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
@@ -220,7 +220,11 @@ ignore_lp_version_product_ids:
 - &quot;000&quot;
 
 # The RHUI product ID. Used to identify RHUI repos that do not contain the &#39;rhui&#39; substring.
-rhui_product_id: &quot;000&quot;
+# This value supersedes &#39;rhui_product_id&#39;, which only allowed a single string and should
+# now be considered as deprecated.
+rhui_product_ids:
+- &quot;000&quot;
+- &quot;001&quot;
 
 # Maps a major RHEL version (platform_major_version), a layered product, or a platform to a list
 # of acceptable GA signing keys (ga_keys) and (optional) beta signing keys (beta_keys). The
@@ -796,6 +800,9 @@ properties:
 
   rhui_product_id:
     $ref: &quot;#/definitions/product_id&quot;
+
+  rhui_product_ids:
+    $ref: &quot;#/definitions/product_id_list&quot;
 
   ignore_lp_version_product_ids:
     $ref: &quot;#/definitions/product_id_list&quot;
