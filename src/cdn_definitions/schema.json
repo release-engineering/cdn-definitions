@@ -261,6 +261,30 @@
             "type": "array",
             "uniqueItems": true
         },
+        "repo_content_sync": {
+            "additionalProperties": false,
+            "patternProperties": {
+                ".*": {
+                    "items": {
+                        "$ref": "#/definitions/repo_content_sync_record"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "repo_content_sync_record": {
+            "additionalProperties": false,
+            "properties": {
+                "populate_dot_repos": {
+                    "type": "boolean"
+                },
+                "source": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "repo_override": {
             "additionalProperties": false,
             "allOf": [
@@ -441,6 +465,9 @@
         },
         "releasever_alias": {
             "$ref": "#/definitions/path_alias_list"
+        },
+        "repo_content_sync": {
+            "$ref": "#/definitions/repo_content_sync"
         },
         "repo_overrides": {
             "$ref": "#/definitions/repo_overrides"

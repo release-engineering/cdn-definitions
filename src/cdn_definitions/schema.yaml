@@ -270,6 +270,24 @@ definitions:
           $ref: "#/definitions/repo_override"
     additionalProperties: false
 
+  repo_content_sync_record:
+    type: object
+    properties:
+      source:
+        type: string
+      populate_dot_repos:
+        type: boolean
+    additionalProperties: false
+
+  repo_content_sync:
+    type: object
+    patternProperties:
+      ".*":
+        type: array
+        items:
+          $ref: "#/definitions/repo_content_sync_record"
+    additionalProperties: false
+
   directory_layout:
     type: object
     properties:
@@ -358,6 +376,7 @@ properties:
   rhel_open_dist:
     $ref: "#/definitions/major_version_list"
 
+  # Deprecated by rhui_product_ids
   rhui_product_id:
     $ref: "#/definitions/product_id"
 
@@ -370,8 +389,12 @@ properties:
   exclude_from_listings:
     $ref: "#/definitions/exclude_versions_from_listings"
 
+  # Deprecated by repo_content_sync
   populate_ubi_dot_repos:
     type: boolean
+
+  repo_content_sync:
+    $ref: "#/definitions/repo_content_sync"
 
   repo_overrides:
     $ref: "#/definitions/repo_overrides"
