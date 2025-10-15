@@ -34,6 +34,12 @@ def freeze(node):
     """
     Converts dict to frozendict and list to frozenlist.
     """
+    if isinstance(node, (frozenlist, frozendict)):
+        # YAML parser creates object references when using YAML anchors.
+        # When one object in the tree is frozen, it affects all references to it,
+        # so when the traversal encounters a reference to already frozen object,
+        # it must not attempt to freeze it again.
+        return node
     if isinstance(node, list):
         # Iterating using index instead of enumeration
         # so we can replace the list items in place

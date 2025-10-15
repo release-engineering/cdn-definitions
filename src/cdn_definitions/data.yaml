@@ -225,7 +225,7 @@ rhel_open_dist:
 # repo_content_sync configures selective content synchronization from RHEL repos to other products.
 # It is used e.g. by UBI to sync content to Public CDN.
 repo_content_sync:
-  stage:
+  stage: &repo_content_sync_yaml_anchor
   # Source git repo contains the configuration for tooling that facilitates
   # the repo content sync (currently ubipop).
   # The configuration includes content set labels and lists with allowed and blocked packages.
@@ -237,11 +237,7 @@ repo_content_sync:
     populate_dot_repos: False
   - source: https://example.com/client-tools/data
     populate_dot_repos: True
-  prod:
-  - source: https://example.com/ubi/data
-    populate_dot_repos: False
-  - source: https://example.com/client-tools/data
-    populate_dot_repos: True
+  prod: *repo_content_sync_yaml_anchor
 
 # repo_overrides can be used to define mappings between certain criteria matching CDN repos
 # and configuration which should be set on those repos. The intended usage is to allow
