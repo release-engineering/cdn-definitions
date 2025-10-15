@@ -264,9 +264,26 @@ exclude_from_listings:
 rhel_open_dist:
 - 0
 
-# If set to False, ubi_population repo note will be set False for all ubi DOT repos and
-# no ubi DOT repo will be populated.
-populate_ubi_dot_repos: True
+# repo_content_sync configures selective content synchronization from RHEL repos to other products.
+# It is used e.g. by UBI to sync content to Public CDN.
+repo_content_sync:
+  stage:
+  # Source git repo contains the configuration for tooling that facilitates
+  # the repo content sync (currently ubipop).
+  # The configuration includes content set labels and lists with allowed and blocked packages.
+  - source: https://example.com/ubi/data
+    # If set to False, ubi_population repo note will be set False for all DOT repos and
+    # no output DOT repo belonging under the content set defined in the source git repo
+    # will be populated. Only the mainline repos will be populated. If set to True, all DOT repos
+    # will be populated alongside the mainline repos.
+    populate_dot_repos: False
+  - source: https://example.com/client-tools/data
+    populate_dot_repos: True
+  prod:
+  - source: https://example.com/ubi/data
+    populate_dot_repos: False
+  - source: https://example.com/client-tools/data
+    populate_dot_repos: True
 
 # repo_overrides can be used to define mappings between certain criteria matching CDN repos
 # and configuration which should be set on those repos. The intended usage is to allow
@@ -710,6 +727,24 @@ definitions:
           $ref: &quot;#/definitions/repo_override&quot;
     additionalProperties: false
 
+  repo_content_sync_record:
+    type: object
+    properties:
+      source:
+        type: string
+      populate_dot_repos:
+        type: boolean
+    additionalProperties: false
+
+  repo_content_sync:
+    type: object
+    patternProperties:
+      &quot;.*&quot;:
+        type: array
+        items:
+          $ref: &quot;#/definitions/repo_content_sync_record&quot;
+    additionalProperties: false
+
   directory_layout:
     type: object
     properties:
@@ -798,6 +833,7 @@ properties:
   rhel_open_dist:
     $ref: &quot;#/definitions/major_version_list&quot;
 
+  # Deprecated by rhui_product_ids
   rhui_product_id:
     $ref: &quot;#/definitions/product_id&quot;
 
@@ -810,8 +846,12 @@ properties:
   exclude_from_listings:
     $ref: &quot;#/definitions/exclude_versions_from_listings&quot;
 
+  # Deprecated by repo_content_sync
   populate_ubi_dot_repos:
     type: boolean
+
+  repo_content_sync:
+    $ref: &quot;#/definitions/repo_content_sync&quot;
 
   repo_overrides:
     $ref: &quot;#/definitions/repo_overrides&quot;

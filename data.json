@@ -99,7 +99,6 @@
     "override_initial_rhel_release": {
         "0": "0.0"
     },
-    "populate_ubi_dot_repos": true,
     "release_stream_mappings": {
         "aus": [
             "0.0"
@@ -127,6 +126,28 @@
             "src": "/content/dist/rhel1/1"
         }
     ],
+    "repo_content_sync": {
+        "prod": [
+            {
+                "populate_dot_repos": false,
+                "source": "https://example.com/ubi/data"
+            },
+            {
+                "populate_dot_repos": true,
+                "source": "https://example.com/client-tools/data"
+            }
+        ],
+        "stage": [
+            {
+                "populate_dot_repos": false,
+                "source": "https://example.com/ubi/data"
+            },
+            {
+                "populate_dot_repos": true,
+                "source": "https://example.com/client-tools/data"
+            }
+        ]
+    },
     "repo_overrides": {
         "prod": [
             {
