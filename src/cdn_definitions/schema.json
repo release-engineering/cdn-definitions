@@ -281,6 +281,9 @@
                 },
                 "source": {
                     "type": "string"
+                },
+                "branch_prefix": {
+                  "type": "string"   
                 }
             },
             "type": "object"
