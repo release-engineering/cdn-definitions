@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [3.5.1] - 2026-03-04
+
+### Fixed
+
+- Upload to PyPI
+
 ## [3.5.0] - 2026-03-04
 
 ### Added
@@ -142,7 +148,8 @@ CDN repos and feature flags which should be enabled on those repos.
 
 - Initial release
 
-[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v3.5.0...HEAD
+[Unreleased]: https://github.com/release-engineering/cdn-definitions/compare/v3.5.1...HEAD
+[3.5.1]: https://github.com/release-engineering/cdn-definitions/compare/v3.5.0...v3.5.1
 [3.5.0]: https://github.com/release-engineering/cdn-definitions/compare/v3.4.1...v3.5.0
 [3.4.1]: https://github.com/release-engineering/cdn-definitions/compare/v3.4.0...v3.4.1
 [3.4.0]: https://github.com/release-engineering/cdn-definitions/compare/v3.3.0...v3.4.0
