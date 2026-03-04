@@ -275,6 +275,8 @@ definitions:
     properties:
       source:
         type: string
+      branch_prefix:
+        type: string
       populate_dot_repos:
         type: boolean
     additionalProperties: false

@@ -235,6 +235,7 @@ repo_content_sync:
     # will be populated. Only the mainline repos will be populated. If set to True, all DOT repos
     # will be populated alongside the mainline repos.
     populate_dot_repos: False
+    branch_prefix: ubi
   - source: https://example.com/client-tools/data
     populate_dot_repos: True
   prod: *repo_content_sync_yaml_anchor

@@ -130,7 +130,8 @@
         "prod": [
             {
                 "populate_dot_repos": false,
-                "source": "https://example.com/ubi/data"
+                "source": "https://example.com/ubi/data",
+                "branch_prefix": "ubi"
             },
             {
                 "populate_dot_repos": true,
@@ -140,7 +141,8 @@
         "stage": [
             {
                 "populate_dot_repos": false,
-                "source": "https://example.com/ubi/data"
+                "source": "https://example.com/ubi/data",
+                "branch_prefix": "ubi"
             },
             {
                 "populate_dot_repos": true,
